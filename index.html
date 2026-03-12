@@ -4,796 +4,714 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SUFFIX Social Media Dashboard — Mar 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0a0a0a;
-  --surface: #141414;
-  --surface2: #1c1c1c;
-  --border: #2a2a2a;
-  --lime: #c8ff00;
-  --lime-dim: #8ab300;
-  --text: #e8e8e8;
-  --text-dim: #888;
-  --text-muted: #555;
-  --red: #ff4d4d;
-  --green: #4dff91;
-  --blue: #4da6ff;
-  --purple: #a64dff;
-  --orange: #ff9f4d;
-  --pink: #ff4d9f;
-  --cyan: #4dfff2;
+  --bg: #faf9f7;
+  --surface: #ffffff;
+  --surface2: #f3f1ee;
+  --border: #e5e2dc;
+  --border-strong: #d1cdc5;
+  --ink: #1a1816;
+  --ink2: #3d3833;
+  --ink3: #6b6560;
+  --ink4: #9e9790;
+  --accent: #1a1816;
+  --tiktok: #111111;
+  --youtube: #c4302b;
+  --instagram: #c13584;
+  --facebook: #1877f2;
+  --spotify: #1db954;
+  --lemon8: #d4a800;
+  --blockdit: #2d8a4e;
+  --up: #1a7a3a;
+  --up-bg: #e8f5e9;
+  --down: #b71c1c;
+  --down-bg: #fce4ec;
+  --warn: #e65100;
+  --warn-bg: #fff3e0;
+  --info: #1565c0;
+  --info-bg: #e3f2fd;
+  --highlight: #fffde7;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; line-height:1.5; }
-.mono { font-family:'Space Mono',monospace; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--ink);font-family:'Instrument Sans',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+.mono{font-family:'JetBrains Mono',monospace;}
 
-/* Header */
-.header { padding:40px 48px 32px; border-bottom:1px solid var(--border); }
-.header-top { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px; }
-.brand { display:flex; align-items:center; gap:16px; }
-.brand-logo { width:48px; height:48px; background:var(--text); border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:11px; color:var(--bg); letter-spacing:0.5px; }
-.brand h1 { font-size:28px; font-weight:700; letter-spacing:-0.5px; }
-.brand h1 span { color:var(--lime); }
-.header-meta { text-align:right; color:var(--text-dim); font-size:13px; }
-.header-meta strong { color:var(--text); }
+/* ─── Header ─── */
+.header{background:var(--ink);color:#fff;padding:36px 48px 28px;}
+.header-row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;}
+.brand{display:flex;align-items:center;gap:14px;}
+.logo{width:44px;height:44px;border:2px solid #fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:.5px;}
+.brand h1{font-size:24px;font-weight:700;letter-spacing:-.3px;}
+.header-meta{font-size:12px;color:#aaa;text-align:right;}
+.header-meta strong{color:#fff;}
 
-/* Nav Tabs */
-.nav { display:flex; gap:4px; padding:0 48px; margin-top:24px; overflow-x:auto; }
-.nav-btn { background:none; border:1px solid var(--border); color:var(--text-dim); padding:8px 20px; border-radius:8px; cursor:pointer; font-family:inherit; font-size:13px; font-weight:500; white-space:nowrap; transition:all .15s; }
-.nav-btn:hover { border-color:var(--text-dim); color:var(--text); }
-.nav-btn.active { background:var(--lime); color:var(--bg); border-color:var(--lime); font-weight:700; }
+/* ─── Nav ─── */
+.nav{display:flex;gap:2px;padding:0 48px;background:var(--ink);padding-bottom:0;overflow-x:auto;}
+.nav-btn{background:transparent;border:none;color:#999;padding:10px 18px;font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .15s;}
+.nav-btn:hover{color:#ccc;}
+.nav-btn.active{color:#fff;border-bottom-color:#fff;font-weight:600;}
 
-/* Main */
-.main { padding:32px 48px 64px; }
-.section { display:none; }
-.section.active { display:block; }
+/* ─── Main ─── */
+.main{padding:32px 48px 80px;max-width:1400px;margin:0 auto;}
+.section{display:none;}
+.section.active{display:block;}
 
-/* Grid */
-.grid { display:grid; gap:16px; }
-.grid-2 { grid-template-columns:1fr 1fr; }
-.grid-3 { grid-template-columns:1fr 1fr 1fr; }
-.grid-4 { grid-template-columns:1fr 1fr 1fr 1fr; }
-.grid-7 { grid-template-columns:repeat(7, 1fr); }
+/* ─── Grid ─── */
+.g{display:grid;gap:16px;}
+.g2{grid-template-columns:1fr 1fr;}
+.g3{grid-template-columns:1fr 1fr 1fr;}
+.g4{grid-template-columns:1fr 1fr 1fr 1fr;}
+.g7{grid-template-columns:repeat(7,1fr);}
 
-/* Card */
-.card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px; }
-.card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
-.card-title { font-size:12px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; font-weight:500; }
-.card-value { font-size:32px; font-weight:700; letter-spacing:-1px; }
-.card-value.sm { font-size:22px; }
-.card-change { font-size:12px; font-weight:500; margin-top:4px; }
-.card-change.up { color:var(--green); }
-.card-change.down { color:var(--red); }
-.card-change.neutral { color:var(--text-dim); }
+/* ─── Card ─── */
+.c{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;}
+.c-title{font-size:11px;color:var(--ink4);text-transform:uppercase;letter-spacing:.8px;font-weight:600;margin-bottom:10px;}
+.c-val{font-size:30px;font-weight:700;letter-spacing:-1px;line-height:1.2;}
+.c-val.sm{font-size:22px;}
+.c-sub{font-size:12px;color:var(--ink3);margin-top:2px;}
 
-/* Platform Badge */
-.badge { display:inline-flex; align-items:center; gap:6px; padding:4px 12px; border-radius:20px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; }
-.badge-tiktok { background:#25f4ee22; color:#25f4ee; }
-.badge-youtube { background:#ff000022; color:#ff4444; }
-.badge-instagram { background:#e1306c22; color:#e1306c; }
-.badge-facebook { background:#1877f222; color:#4da6ff; }
-.badge-spotify { background:#1db95422; color:#1db954; }
-.badge-lemon8 { background:#ffdd0022; color:#ffdd00; }
-.badge-blockdit { background:#00b90022; color:#00b900; }
+/* ─── Pill badges ─── */
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:600;}
+.pill-up{background:var(--up-bg);color:var(--up);}
+.pill-down{background:var(--down-bg);color:var(--down);}
+.pill-warn{background:var(--warn-bg);color:var(--warn);}
+.pill-info{background:var(--info-bg);color:var(--info);}
+.pill-neutral{background:var(--surface2);color:var(--ink3);}
 
-/* Bar Chart */
-.bar-row { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
-.bar-label { font-size:12px; color:var(--text-dim); min-width:70px; text-align:right; }
-.bar-track { flex:1; height:24px; background:var(--surface2); border-radius:4px; overflow:hidden; position:relative; }
-.bar-fill { height:100%; border-radius:4px; display:flex; align-items:center; padding-left:8px; font-size:11px; font-weight:700; min-width:fit-content; }
-.bar-val { font-size:12px; color:var(--text); min-width:50px; text-align:right; }
+/* ─── Platform tags ─── */
+.ptag{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.3px;}
+.ptag-tk{background:#f0f0f0;color:#000;border:1px solid #ddd;}
+.ptag-yt{background:#fdecea;color:#c4302b;border:1px solid #f5c6cb;}
+.ptag-ig{background:#fce4f3;color:#c13584;border:1px solid #f0b3d6;}
+.ptag-fb{background:#e3f2fd;color:#1877f2;border:1px solid #bbdefb;}
+.ptag-sp{background:#e8f5e9;color:#1a7a3a;border:1px solid #a5d6a7;}
+.ptag-l8{background:#fff8e1;color:#a07800;border:1px solid #ffe082;}
+.ptag-bd{background:#e8f5e9;color:#2d8a4e;border:1px solid #a5d6a7;}
 
-/* Donut */
-.donut-wrap { display:flex; align-items:center; gap:24px; }
-.donut { width:100px; height:100px; border-radius:50%; position:relative; }
-.donut-center { position:absolute; inset:20px; background:var(--surface); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; }
-.donut-legend { display:flex; flex-direction:column; gap:6px; }
-.legend-item { display:flex; align-items:center; gap:8px; font-size:13px; }
-.legend-dot { width:10px; height:10px; border-radius:3px; flex-shrink:0; }
+/* ─── Bar ─── */
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:7px;}
+.bar-label{font-size:12px;color:var(--ink3);min-width:68px;text-align:right;font-weight:500;}
+.bar-track{flex:1;height:22px;background:var(--surface2);border-radius:4px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:10px;font-weight:600;color:#fff;}
+.bar-val{font-size:12px;color:var(--ink2);min-width:48px;text-align:right;font-weight:600;}
 
-/* Table */
-.tbl { width:100%; border-collapse:collapse; }
-.tbl th { text-align:left; font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; padding:8px 12px; border-bottom:1px solid var(--border); font-weight:500; }
-.tbl td { padding:10px 12px; border-bottom:1px solid var(--border); font-size:13px; }
-.tbl tr:last-child td { border-bottom:none; }
+/* ─── Table ─── */
+.tbl{width:100%;border-collapse:collapse;}
+.tbl th{text-align:left;font-size:10px;color:var(--ink4);text-transform:uppercase;letter-spacing:.8px;padding:8px 10px;border-bottom:2px solid var(--border);font-weight:600;}
+.tbl td{padding:10px;border-bottom:1px solid var(--border);font-size:13px;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:hover td{background:var(--surface2);}
 
-/* KPI Row */
-.kpi-strip { display:flex; gap:2px; margin-bottom:24px; }
-.kpi-item { flex:1; background:var(--surface); border:1px solid var(--border); padding:16px 20px; }
-.kpi-item:first-child { border-radius:12px 0 0 12px; }
-.kpi-item:last-child { border-radius:0 12px 12px 0; }
-.kpi-label { font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:4px; }
-.kpi-num { font-size:24px; font-weight:700; letter-spacing:-0.5px; }
+/* ─── KPI strip ─── */
+.kpi-strip{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;}
+.kpi-item{flex:1;min-width:140px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
+.kpi-label{font-size:10px;color:var(--ink4);text-transform:uppercase;letter-spacing:.6px;font-weight:600;margin-bottom:4px;}
+.kpi-num{font-size:24px;font-weight:700;letter-spacing:-.5px;color:var(--ink);}
 
-/* Section Title */
-.sec-title { font-size:20px; font-weight:700; margin-bottom:16px; display:flex; align-items:center; gap:10px; }
-.sec-title .line { flex:1; height:1px; background:var(--border); }
-.sec-sub { font-size:14px; color:var(--text-dim); margin-bottom:20px; }
+/* ─── Section headers ─── */
+.sec-h{font-size:18px;font-weight:700;margin-bottom:6px;color:var(--ink);display:flex;align-items:center;gap:10px;}
+.sec-h::after{content:'';flex:1;height:1px;background:var(--border);}
+.sec-sub{font-size:13px;color:var(--ink3);margin-bottom:20px;}
 
-/* Takeaway Box */
-.takeaway { background:var(--surface2); border-left:3px solid var(--lime); padding:16px 20px; border-radius:0 8px 8px 0; margin-bottom:12px; }
-.takeaway-title { font-size:13px; font-weight:700; color:var(--lime); margin-bottom:4px; }
-.takeaway p { font-size:13px; color:var(--text-dim); line-height:1.6; }
+/* ─── Insight box ─── */
+.insight{background:var(--highlight);border:1px solid #f0e68c;border-left:4px solid #c8a600;padding:16px 20px;border-radius:0 8px 8px 0;margin-bottom:14px;}
+.insight-h{font-size:12px;font-weight:700;color:#8a7200;margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px;}
+.insight p{font-size:13px;color:var(--ink2);line-height:1.7;}
 
-/* Direction Card */
-.dir-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; margin-bottom:16px; }
-.dir-card h3 { font-size:15px; font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
-.dir-card p { font-size:13px; color:var(--text-dim); line-height:1.7; }
-.dir-card .kpi-tag { display:inline-block; background:var(--lime); color:var(--bg); font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px; margin-top:8px; }
+.insight.red{background:#fff5f5;border-color:#ffcdd2;border-left-color:var(--down);}
+.insight.red .insight-h{color:var(--down);}
+.insight.green{background:#f1f8f2;border-color:#c8e6c9;border-left-color:var(--up);}
+.insight.green .insight-h{color:var(--up);}
+.insight.blue{background:#f5f9ff;border-color:#bbdefb;border-left-color:var(--info);}
+.insight.blue .insight-h{color:var(--info);}
 
-/* Responsive */
+/* ─── Direction card ─── */
+.dir{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:14px;}
+.dir h3{font-size:14px;font-weight:700;margin-bottom:6px;}
+.dir p{font-size:13px;color:var(--ink3);line-height:1.7;}
+
+/* ─── Summary bottom box ─── */
+.bottom-box{background:var(--ink);color:#fff;border-radius:12px;padding:36px;text-align:center;}
+.bottom-box h2{font-size:20px;margin-bottom:10px;}
+.bottom-box p{font-size:14px;color:#ccc;max-width:680px;margin:0 auto;line-height:1.8;}
+.bottom-box strong{color:#fff;}
+
+/* ─── Donut helper ─── */
+.donut-mini{width:72px;height:72px;border-radius:50%;position:relative;flex-shrink:0;}
+.donut-mini::after{content:'';position:absolute;inset:16px;background:var(--surface);border-radius:50%;}
+
+/* ─── Responsive ─── */
 @media(max-width:900px){
-  .header,.main,.nav { padding-left:20px; padding-right:20px; }
-  .grid-2,.grid-3,.grid-4 { grid-template-columns:1fr; }
-  .grid-7 { grid-template-columns:repeat(3,1fr); }
-  .kpi-strip { flex-wrap:wrap; }
-  .kpi-item { border-radius:8px!important; }
+  .header,.nav,.main{padding-left:20px;padding-right:20px;}
+  .g2,.g3,.g4,.g7{grid-template-columns:1fr;}
+  .kpi-strip{flex-direction:column;}
 }
-
-/* Scroll hint */
-.scroll-hint { font-size:11px; color:var(--text-muted); text-align:center; margin-top:8px; }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
-  <div class="header-top">
+  <div class="header-row">
     <div class="brand">
-      <div class="brand-logo">SUFF/X</div>
-      <h1>Social Media <span>Dashboard</span></h1>
+      <div class="logo">SUFF/X</div>
+      <h1>Social Media Dashboard</h1>
     </div>
     <div class="header-meta">
-      <strong>Report Period</strong><br>
-      Feb 8 – Mar 11, 2026<br>
-      <span class="mono" style="font-size:11px; color:var(--text-muted);">Updated: Mar 12, 2026</span>
+      <strong>Report Period:</strong> Feb 8 – Mar 11, 2026<br>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#777;">Updated Mar 12, 2026</span>
     </div>
   </div>
-  <div class="nav" style="margin-top:24px;">
-    <button class="nav-btn active" onclick="showSection('overview')">Overview</button>
-    <button class="nav-btn" onclick="showSection('tiktok')">TikTok</button>
-    <button class="nav-btn" onclick="showSection('youtube')">YouTube</button>
-    <button class="nav-btn" onclick="showSection('instagram')">Instagram</button>
-    <button class="nav-btn" onclick="showSection('facebook')">Facebook</button>
-    <button class="nav-btn" onclick="showSection('others')">Spotify · Lemon8 · Blockdit</button>
-    <button class="nav-btn" onclick="showSection('direction')">Key Takeaways & Direction</button>
-  </div>
+</div>
+<div class="nav">
+  <button class="nav-btn active" onclick="go('overview')">Overview</button>
+  <button class="nav-btn" onclick="go('tiktok')">TikTok</button>
+  <button class="nav-btn" onclick="go('youtube')">YouTube</button>
+  <button class="nav-btn" onclick="go('instagram')">Instagram</button>
+  <button class="nav-btn" onclick="go('facebook')">Facebook</button>
+  <button class="nav-btn" onclick="go('others')">Spotify · Lemon8 · Blockdit</button>
+  <button class="nav-btn" onclick="go('direction')">Takeaways & Direction</button>
 </div>
 
 <div class="main">
 
-<!-- ===== OVERVIEW ===== -->
-<div class="section active" id="sec-overview">
-  <div class="sec-title">Channel Snapshot <span class="line"></span></div>
+<!-- ===================== OVERVIEW ===================== -->
+<div class="section active" id="s-overview">
+  <div class="sec-h">Channel Snapshot</div>
   <div class="sec-sub">ภาพรวม 7 ช่องทาง — ข้อมูลจริงจาก Analytics ช่วง Feb–Mar 2026</div>
 
-  <!-- Summary Cards -->
-  <div class="grid grid-7" style="margin-bottom:24px;">
-    <div class="card" style="border-top:3px solid #25f4ee;">
-      <div class="card-title">TikTok</div>
-      <div class="card-value sm mono">105</div>
-      <div style="font-size:11px;color:var(--text-dim)">Followers</div>
-      <div class="card-change up">Video Views: 1,934</div>
+  <div class="g g7" style="margin-bottom:24px;">
+    <div class="c" style="border-top:3px solid var(--tiktok);">
+      <div class="c-title">TikTok</div>
+      <div class="c-val sm mono">105</div>
+      <div class="c-sub">Followers</div>
+      <div style="margin-top:6px;"><span class="pill pill-up">Views 1,934</span></div>
     </div>
-    <div class="card" style="border-top:3px solid #ff4444;">
-      <div class="card-title">YouTube</div>
-      <div class="card-value sm mono">+3</div>
-      <div style="font-size:11px;color:var(--text-dim)">New Subs (28d)</div>
-      <div class="card-change neutral">Views: 1.2K</div>
+    <div class="c" style="border-top:3px solid var(--youtube);">
+      <div class="c-title">YouTube</div>
+      <div class="c-val sm mono">1.2K</div>
+      <div class="c-sub">Views (28d)</div>
+      <div style="margin-top:6px;"><span class="pill pill-info">+3 Subs</span></div>
     </div>
-    <div class="card" style="border-top:3px solid #e1306c;">
-      <div class="card-title">Instagram</div>
-      <div class="card-value sm mono">972</div>
-      <div style="font-size:11px;color:var(--text-dim)">Followers</div>
-      <div class="card-change down">Growth: -0.4%</div>
+    <div class="c" style="border-top:3px solid var(--instagram);">
+      <div class="c-title">Instagram</div>
+      <div class="c-val sm mono">972</div>
+      <div class="c-sub">Followers</div>
+      <div style="margin-top:6px;"><span class="pill pill-down">-0.4%</span></div>
     </div>
-    <div class="card" style="border-top:3px solid #1877f2;">
-      <div class="card-title">Facebook</div>
-      <div class="card-value sm mono">764</div>
-      <div style="font-size:11px;color:var(--text-dim)">Views (28d)</div>
-      <div class="card-change up">+226.5%</div>
+    <div class="c" style="border-top:3px solid var(--facebook);">
+      <div class="c-title">Facebook</div>
+      <div class="c-val sm mono">764</div>
+      <div class="c-sub">Views (28d)</div>
+      <div style="margin-top:6px;"><span class="pill pill-up">+226.5%</span></div>
     </div>
-    <div class="card" style="border-top:3px solid #1db954;">
-      <div class="card-title">Spotify</div>
-      <div class="card-value sm mono">8</div>
-      <div style="font-size:11px;color:var(--text-dim)">Listeners (est.)</div>
-      <div class="card-change neutral">Niche audience</div>
+    <div class="c" style="border-top:3px solid var(--spotify);">
+      <div class="c-title">Spotify</div>
+      <div class="c-val sm mono">~8</div>
+      <div class="c-sub">Listeners</div>
+      <div style="margin-top:6px;"><span class="pill pill-neutral">Niche</span></div>
     </div>
-    <div class="card" style="border-top:3px solid #ffdd00;">
-      <div class="card-title">Lemon8</div>
-      <div class="card-value sm mono">31.7K</div>
-      <div style="font-size:11px;color:var(--text-dim)">Impressions</div>
-      <div class="card-change up">27 Followers</div>
+    <div class="c" style="border-top:3px solid var(--lemon8);">
+      <div class="c-title">Lemon8</div>
+      <div class="c-val sm mono">31.7K</div>
+      <div class="c-sub">Impressions</div>
+      <div style="margin-top:6px;"><span class="pill pill-up">27 Followers</span></div>
     </div>
-    <div class="card" style="border-top:3px solid #00b900;">
-      <div class="card-title">Blockdit</div>
-      <div class="card-value sm mono">5</div>
-      <div style="font-size:11px;color:var(--text-dim)">Followers</div>
-      <div class="card-change neutral">Very early stage</div>
-    </div>
-  </div>
-
-  <!-- Core Audience Profile -->
-  <div class="sec-title" style="margin-top:32px;">Core Audience Profile (Cross-Platform) <span class="line"></span></div>
-  <div class="grid grid-3" style="margin-bottom:24px;">
-    <div class="card">
-      <div class="card-title">Primary Age Group</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">25-34</div><div class="bar-track"><div class="bar-fill" style="width:85%;background:var(--lime);">dominant</div></div><div class="bar-val">~42-44%</div></div>
-        <div class="bar-row"><div class="bar-label">35-44</div><div class="bar-track"><div class="bar-fill" style="width:65%;background:var(--lime-dim);"></div></div><div class="bar-val">~23-43%</div></div>
-        <div class="bar-row"><div class="bar-label">18-24</div><div class="bar-track"><div class="bar-fill" style="width:25%;background:#556b2f;"></div></div><div class="bar-val">~3-18%</div></div>
-        <div class="bar-row"><div class="bar-label">45-54</div><div class="bar-track"><div class="bar-fill" style="width:18%;background:#3a3a3a;"></div></div><div class="bar-val">~9-10%</div></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-title">Gender Split (varies by platform)</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">TikTok</div><div class="bar-track"><div class="bar-fill" style="width:49.3%;background:#25f4ee;">M 49.3%</div><div class="bar-fill" style="width:50.7%;background:#fe2c55;">F 50.7%</div></div></div>
-        <div class="bar-row"><div class="bar-label">IG</div><div class="bar-track"><div class="bar-fill" style="width:58.8%;background:#e1306c55;">M 58.8%</div><div class="bar-fill" style="width:41.2%;background:#e1306c;">F 41.2%</div></div></div>
-        <div class="bar-row"><div class="bar-label">FB</div><div class="bar-track"><div class="bar-fill" style="width:56%;background:#1877f255;">M ~56%</div><div class="bar-fill" style="width:44%;background:#1877f2;">F ~44%</div></div></div>
-        <div class="bar-row"><div class="bar-label">Spotify</div><div class="bar-track"><div class="bar-fill" style="width:62.5%;background:#1db95455;">M 62.5%</div><div class="bar-fill" style="width:25%;background:#1db954;">F 25%</div></div></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-title">Geography (All Platforms)</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">Thailand</div><div class="bar-track"><div class="bar-fill" style="width:90%;background:var(--lime);"></div></div><div class="bar-val">75-96%</div></div>
-        <div class="bar-row"><div class="bar-label">Bangkok</div><div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--lime-dim);"></div></div><div class="bar-val">48-57%</div></div>
-        <div class="bar-row"><div class="bar-label">Malawi*</div><div class="bar-track"><div class="bar-fill" style="width:12%;background:var(--orange);"></div></div><div class="bar-val">~8.7%</div></div>
-      </div>
-      <div style="margin-top:8px;font-size:11px;color:var(--text-muted);">* Malawi audience เป็น outlier ใน Facebook — น่าจะมาจาก bot หรือ irrelevant follows</div>
+    <div class="c" style="border-top:3px solid var(--blockdit);">
+      <div class="c-title">Blockdit</div>
+      <div class="c-val sm mono">5</div>
+      <div class="c-sub">Followers</div>
+      <div style="margin-top:6px;"><span class="pill pill-neutral">Early</span></div>
     </div>
   </div>
 
-  <!-- Quick Comparison Table -->
-  <div class="card" style="margin-bottom:24px;">
-    <div class="card-title" style="margin-bottom:12px;">Channel Comparison — Organic Performance (Latest Period)</div>
+  <!-- Core Audience -->
+  <div class="sec-h" style="margin-top:28px;">Core Audience (Cross-Platform)</div>
+  <div class="g g3" style="margin-bottom:24px;">
+    <div class="c">
+      <div class="c-title">Primary Age Group</div>
+      <div class="bar-row"><div class="bar-label">25-34</div><div class="bar-track"><div class="bar-fill" style="width:88%;background:var(--ink);">dominant</div></div><div class="bar-val">42-44%</div></div>
+      <div class="bar-row"><div class="bar-label">35-44</div><div class="bar-track"><div class="bar-fill" style="width:68%;background:var(--ink3);"></div></div><div class="bar-val">23-43%</div></div>
+      <div class="bar-row"><div class="bar-label">18-24</div><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--ink4);"></div></div><div class="bar-val">3-18%</div></div>
+      <div class="bar-row"><div class="bar-label">45-54</div><div class="bar-track"><div class="bar-fill" style="width:18%;background:#c5bfb6;"></div></div><div class="bar-val">9-10%</div></div>
+    </div>
+    <div class="c">
+      <div class="c-title">Gender Split (by platform)</div>
+      <div class="bar-row"><div class="bar-label">TikTok</div><div class="bar-track"><div class="bar-fill" style="width:49.3%;background:#555;">M 49%</div><div class="bar-fill" style="width:50.7%;background:#d4686a;">F 51%</div></div></div>
+      <div class="bar-row"><div class="bar-label">IG</div><div class="bar-track"><div class="bar-fill" style="width:58.8%;background:#555;">M 59%</div><div class="bar-fill" style="width:41.2%;background:var(--instagram);">F 41%</div></div></div>
+      <div class="bar-row"><div class="bar-label">FB</div><div class="bar-track"><div class="bar-fill" style="width:56%;background:#555;">M 56%</div><div class="bar-fill" style="width:44%;background:var(--facebook);">F 44%</div></div></div>
+      <div class="bar-row"><div class="bar-label">Spotify</div><div class="bar-track"><div class="bar-fill" style="width:62.5%;background:#555;">M 63%</div><div class="bar-fill" style="width:25%;background:var(--spotify);">F 25%</div></div></div>
+    </div>
+    <div class="c">
+      <div class="c-title">Geography</div>
+      <div class="bar-row"><div class="bar-label">Thailand</div><div class="bar-track"><div class="bar-fill" style="width:90%;background:var(--ink);">75-96%</div></div></div>
+      <div class="bar-row"><div class="bar-label">Bangkok</div><div class="bar-track"><div class="bar-fill" style="width:58%;background:var(--ink3);">48-57%</div></div></div>
+      <div class="bar-row"><div class="bar-label" style="color:var(--warn);">Malawi*</div><div class="bar-track"><div class="bar-fill" style="width:12%;background:var(--warn);">~9%</div></div></div>
+      <div style="margin-top:8px;font-size:11px;color:var(--ink4);">* Malawi ใน FB เป็น outlier — น่าจะ bot/irrelevant</div>
+    </div>
+  </div>
+
+  <!-- Comparison Table -->
+  <div class="c" style="margin-bottom:24px;overflow-x:auto;">
+    <div class="c-title" style="margin-bottom:12px;">Channel Performance Comparison</div>
     <table class="tbl">
       <thead><tr><th>Channel</th><th>Followers</th><th>Reach / Views</th><th>Engagement</th><th>Key Metric</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td><span class="badge badge-tiktok">TikTok</span></td><td class="mono">105</td><td class="mono">1,746 reached</td><td class="mono">44 (L+C+S)</td><td>Shares: 13</td><td style="color:var(--green);">▲ Growing fast</td></tr>
-        <tr><td><span class="badge badge-youtube">YouTube</span></td><td class="mono">+3 subs</td><td class="mono">1.2K views</td><td class="mono">120 engaged</td><td>Swipe-away: 91.3%</td><td style="color:var(--orange);">⚠ Retention issue</td></tr>
-        <tr><td><span class="badge badge-instagram">Instagram</span></td><td class="mono">972</td><td class="mono">78 reached</td><td class="mono">—</td><td>Active: 15-18h</td><td style="color:var(--red);">▼ Declining -0.4%</td></tr>
-        <tr><td><span class="badge badge-facebook">Facebook</span></td><td class="mono">~70</td><td class="mono">764 views</td><td class="mono">19 interactions</td><td>Reels: 67.5%</td><td style="color:var(--green);">▲ Views +226%</td></tr>
-        <tr><td><span class="badge badge-spotify">Spotify</span></td><td class="mono">~8</td><td class="mono">—</td><td class="mono">—</td><td>Male 62.5%</td><td style="color:var(--text-dim);">– Niche</td></tr>
-        <tr><td><span class="badge badge-lemon8">Lemon8</span></td><td class="mono">27</td><td class="mono">31.7K imp</td><td class="mono">178 L&S</td><td>Best impression ratio</td><td style="color:var(--green);">▲ High potential</td></tr>
-        <tr><td><span class="badge badge-blockdit">Blockdit</span></td><td class="mono">5</td><td class="mono">—</td><td class="mono">—</td><td>5 followers total</td><td style="color:var(--text-muted);">— Dormant</td></tr>
+        <tr><td><span class="ptag ptag-tk">TikTok</span></td><td class="mono">105</td><td class="mono">1,746</td><td class="mono">44 (L+C+S)</td><td>Shares: 13</td><td><span class="pill pill-up">Growing fast</span></td></tr>
+        <tr><td><span class="ptag ptag-yt">YouTube</span></td><td class="mono">+3</td><td class="mono">1.2K</td><td class="mono">120 engaged</td><td>Swipe-away: 91%</td><td><span class="pill pill-warn">Retention issue</span></td></tr>
+        <tr><td><span class="ptag ptag-ig">Instagram</span></td><td class="mono">972</td><td class="mono">78</td><td class="mono">—</td><td>Peak: 15-18h</td><td><span class="pill pill-down">Declining</span></td></tr>
+        <tr><td><span class="ptag ptag-fb">Facebook</span></td><td class="mono">~70</td><td class="mono">764</td><td class="mono">19</td><td>Reels: 67.5%</td><td><span class="pill pill-up">Views +226%</span></td></tr>
+        <tr><td><span class="ptag ptag-sp">Spotify</span></td><td class="mono">~8</td><td class="mono">—</td><td class="mono">—</td><td>Male 62.5%</td><td><span class="pill pill-neutral">Niche</span></td></tr>
+        <tr><td><span class="ptag ptag-l8">Lemon8</span></td><td class="mono">27</td><td class="mono">31.7K imp</td><td class="mono">178 L&S</td><td>Best imp. ratio</td><td><span class="pill pill-up">High potential</span></td></tr>
+        <tr><td><span class="ptag ptag-bd">Blockdit</span></td><td class="mono">5</td><td class="mono">—</td><td class="mono">—</td><td>—</td><td><span class="pill pill-neutral">Dormant</span></td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- ===== TIKTOK ===== -->
-<div class="section" id="sec-tiktok">
-  <div class="sec-title"><span class="badge badge-tiktok">TikTok</span> @suffix.works <span class="line"></span></div>
+<!-- ===================== TIKTOK ===================== -->
+<div class="section" id="s-tiktok">
+  <div class="sec-h"><span class="ptag ptag-tk">TikTok</span> @suffix.works</div>
   <div class="kpi-strip">
     <div class="kpi-item"><div class="kpi-label">Followers</div><div class="kpi-num mono">105</div></div>
     <div class="kpi-item"><div class="kpi-label">Total Likes</div><div class="kpi-num mono">2,947</div></div>
-    <div class="kpi-item"><div class="kpi-label">Video Views (4wk)</div><div class="kpi-num mono">1,934</div><div class="card-change up">>999%</div></div>
-    <div class="kpi-item"><div class="kpi-label">Reached (4wk)</div><div class="kpi-num mono">1,746</div><div class="card-change up">>999%</div></div>
-    <div class="kpi-item"><div class="kpi-label">Profile Views (4wk)</div><div class="kpi-num mono">28</div><div class="card-change up">>999%</div></div>
+    <div class="kpi-item"><div class="kpi-label">Video Views (4wk)</div><div class="kpi-num mono">1,934</div><div style="margin-top:2px;"><span class="pill pill-up">>999%</span></div></div>
+    <div class="kpi-item"><div class="kpi-label">Reached (4wk)</div><div class="kpi-num mono">1,746</div><div style="margin-top:2px;"><span class="pill pill-up">>999%</span></div></div>
+    <div class="kpi-item"><div class="kpi-label">Profile Views</div><div class="kpi-num mono">28</div></div>
   </div>
 
-  <div class="grid grid-2" style="margin-bottom:24px;">
-    <div class="card">
-      <div class="card-title">Engagement (Last 4 Weeks)</div>
-      <div style="margin-top:16px;">
-        <div class="bar-row"><div class="bar-label">Likes</div><div class="bar-track"><div class="bar-fill" style="width:68%;background:#25f4ee;">30</div></div></div>
-        <div class="bar-row"><div class="bar-label">Shares</div><div class="bar-track"><div class="bar-fill" style="width:30%;background:#fe2c55;">13</div></div></div>
-        <div class="bar-row"><div class="bar-label">Comments</div><div class="bar-track"><div class="bar-fill" style="width:5%;background:#ffdd00;">1</div></div></div>
-      </div>
-      <div style="margin-top:12px;font-size:12px;color:var(--text-dim);">Engagement Rate ≈ 2.3% (44/1,934 views) — ถือว่าดีสำหรับ B2B content</div>
+  <div class="g g2" style="margin-bottom:20px;">
+    <div class="c">
+      <div class="c-title">Engagement (4 Weeks)</div>
+      <div class="bar-row"><div class="bar-label">Likes</div><div class="bar-track"><div class="bar-fill" style="width:68%;background:var(--ink);">30</div></div></div>
+      <div class="bar-row"><div class="bar-label">Shares</div><div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--ink3);">13</div></div></div>
+      <div class="bar-row"><div class="bar-label">Comments</div><div class="bar-track"><div class="bar-fill" style="width:4%;background:var(--ink4);">1</div></div></div>
+      <p style="margin-top:10px;font-size:12px;color:var(--ink3);">Engagement Rate ≈ 2.3% (44/1,934) — ดีสำหรับ B2B</p>
     </div>
-    <div class="card">
-      <div class="card-title">12 Month vs 4 Weeks Comparison</div>
-      <div style="margin-top:16px;">
-        <table class="tbl">
-          <thead><tr><th>Metric</th><th>12 Months</th><th>4 Weeks</th><th>Note</th></tr></thead>
-          <tbody>
-            <tr><td>Video Views</td><td class="mono">1,900</td><td class="mono">1,934</td><td style="color:var(--green);">4 wk > ทั้งปี!</td></tr>
-            <tr><td>Reached</td><td class="mono">1,118</td><td class="mono">1,746</td><td style="color:var(--green);">+56% vs ทั้งปี</td></tr>
-            <tr><td>Likes</td><td class="mono">19</td><td class="mono">30</td><td style="color:var(--green);">+57%</td></tr>
-            <tr><td>Shares</td><td class="mono">10</td><td class="mono">13</td><td style="color:var(--green);">+30%</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="c">
+      <div class="c-title">4 Weeks vs 12 Months</div>
+      <table class="tbl">
+        <thead><tr><th>Metric</th><th>12 Months</th><th>4 Weeks</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>Video Views</td><td class="mono">1,900</td><td class="mono" style="font-weight:700;">1,934</td><td><span class="pill pill-up">4wk > ทั้งปี!</span></td></tr>
+          <tr><td>Reached</td><td class="mono">1,118</td><td class="mono" style="font-weight:700;">1,746</td><td><span class="pill pill-up">+56%</span></td></tr>
+          <tr><td>Likes</td><td class="mono">19</td><td class="mono" style="font-weight:700;">30</td><td><span class="pill pill-up">+57%</span></td></tr>
+          <tr><td>Shares</td><td class="mono">10</td><td class="mono" style="font-weight:700;">13</td><td><span class="pill pill-up">+30%</span></td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
-  <div class="grid grid-3" style="margin-bottom:24px;">
-    <div class="card">
-      <div class="card-title">Age — Reached Audience (4wk)</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">25-34</div><div class="bar-track"><div class="bar-fill" style="width:87%;background:#25f4ee;"></div></div><div class="bar-val">43.7%</div></div>
-        <div class="bar-row"><div class="bar-label">35-44</div><div class="bar-track"><div class="bar-fill" style="width:47%;background:#25f4eebb;"></div></div><div class="bar-val">23.4%</div></div>
-        <div class="bar-row"><div class="bar-label">18-24</div><div class="bar-track"><div class="bar-fill" style="width:37%;background:#25f4ee88;"></div></div><div class="bar-val">18.5%</div></div>
-        <div class="bar-row"><div class="bar-label">45-54</div><div class="bar-track"><div class="bar-fill" style="width:19%;background:#25f4ee55;"></div></div><div class="bar-val">9.7%</div></div>
-        <div class="bar-row"><div class="bar-label">55+</div><div class="bar-track"><div class="bar-fill" style="width:9%;background:#25f4ee33;"></div></div><div class="bar-val">4.7%</div></div>
-      </div>
+  <div class="g g3" style="margin-bottom:20px;">
+    <div class="c">
+      <div class="c-title">Age — Reached (4wk)</div>
+      <div class="bar-row"><div class="bar-label">25-34</div><div class="bar-track"><div class="bar-fill" style="width:87%;background:var(--ink);"></div></div><div class="bar-val">43.7%</div></div>
+      <div class="bar-row"><div class="bar-label">35-44</div><div class="bar-track"><div class="bar-fill" style="width:47%;background:var(--ink3);"></div></div><div class="bar-val">23.4%</div></div>
+      <div class="bar-row"><div class="bar-label">18-24</div><div class="bar-track"><div class="bar-fill" style="width:37%;background:var(--ink4);"></div></div><div class="bar-val">18.5%</div></div>
+      <div class="bar-row"><div class="bar-label">45-54</div><div class="bar-track"><div class="bar-fill" style="width:19%;background:#c5bfb6;"></div></div><div class="bar-val">9.7%</div></div>
+      <div class="bar-row"><div class="bar-label">55+</div><div class="bar-track"><div class="bar-fill" style="width:9%;background:#ddd8d0;"></div></div><div class="bar-val">4.7%</div></div>
     </div>
-    <div class="card">
-      <div class="card-title">Gender (4wk)</div>
-      <div style="margin-top:12px; display:flex; gap:24px; align-items:center;">
-        <div style="width:80px;height:80px;border-radius:50%;background:conic-gradient(#25f4ee 0% 49.3%, #fe2c55 49.3% 100%);position:relative;">
-          <div style="position:absolute;inset:18px;background:var(--surface);border-radius:50%;"></div>
-        </div>
+    <div class="c">
+      <div class="c-title">Gender (4wk)</div>
+      <div style="display:flex;gap:20px;align-items:center;margin-top:8px;">
+        <div class="donut-mini" style="background:conic-gradient(var(--ink) 0% 49.3%, #d4686a 49.3% 100%);"></div>
         <div>
-          <div class="legend-item"><div class="legend-dot" style="background:#25f4ee;"></div>Male 49.3%</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#fe2c55;"></div>Female 50.7%</div>
+          <div style="font-size:13px;margin-bottom:4px;"><span style="display:inline-block;width:10px;height:10px;background:var(--ink);border-radius:2px;margin-right:6px;"></span>Male <strong>49.3%</strong></div>
+          <div style="font-size:13px;"><span style="display:inline-block;width:10px;height:10px;background:#d4686a;border-radius:2px;margin-right:6px;"></span>Female <strong>50.7%</strong></div>
         </div>
       </div>
-      <div style="margin-top:12px;font-size:12px;color:var(--text-dim);">Gender ค่อนข้าง balanced — Content appeal ได้ทั้งสองเพศ</div>
+      <p style="margin-top:12px;font-size:12px;color:var(--ink3);">Gender balanced — Content ดึงดูดทั้งสองเพศ</p>
     </div>
-    <div class="card">
-      <div class="card-title">Top Cities (4wk)</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">Bangkok</div><div class="bar-track"><div class="bar-fill" style="width:53%;background:#25f4ee;"></div></div><div class="bar-val">53.3%</div></div>
-        <div class="bar-row"><div class="bar-label">สุราษฎร์ฯ</div><div class="bar-track"><div class="bar-fill" style="width:4%;background:#25f4eebb;"></div></div><div class="bar-val">4.0%</div></div>
-        <div class="bar-row"><div class="bar-label">นนทบุรี</div><div class="bar-track"><div class="bar-fill" style="width:2.5%;background:#25f4ee88;"></div></div><div class="bar-val">2.5%</div></div>
-        <div class="bar-row"><div class="bar-label">โคราช</div><div class="bar-track"><div class="bar-fill" style="width:2.5%;background:#25f4ee88;"></div></div><div class="bar-val">2.5%</div></div>
-        <div class="bar-row"><div class="bar-label">เชียงใหม่</div><div class="bar-track"><div class="bar-fill" style="width:2%;background:#25f4ee55;"></div></div><div class="bar-val">2.0%</div></div>
-      </div>
-      <div style="margin-top:8px;font-size:11px;color:var(--text-muted);">Thailand 96.2% — กระจายดีทั้ง กทม.และต่างจังหวัด</div>
+    <div class="c">
+      <div class="c-title">Top Cities (4wk)</div>
+      <div class="bar-row"><div class="bar-label">Bangkok</div><div class="bar-track"><div class="bar-fill" style="width:53%;background:var(--ink);">53.3%</div></div></div>
+      <div class="bar-row"><div class="bar-label">สุราษฎร์ฯ</div><div class="bar-track"><div class="bar-fill" style="width:8%;background:var(--ink3);"></div></div><div class="bar-val">4.0%</div></div>
+      <div class="bar-row"><div class="bar-label">นนทบุรี</div><div class="bar-track"><div class="bar-fill" style="width:5%;background:var(--ink4);"></div></div><div class="bar-val">2.5%</div></div>
+      <div class="bar-row"><div class="bar-label">โคราช</div><div class="bar-track"><div class="bar-fill" style="width:5%;background:var(--ink4);"></div></div><div class="bar-val">2.5%</div></div>
+      <div class="bar-row"><div class="bar-label">เชียงใหม่</div><div class="bar-track"><div class="bar-fill" style="width:4%;background:#c5bfb6;"></div></div><div class="bar-val">2.0%</div></div>
+      <p style="margin-top:6px;font-size:11px;color:var(--ink4);">Thailand 96.2% — กระจายดีทั้ง กทม.+ต่างจังหวัด</p>
     </div>
   </div>
 
-  <!-- Top Videos -->
-  <div class="card" style="margin-bottom:24px;">
-    <div class="card-title" style="margin-bottom:12px;">Top Videos — THOUGHT Series (2026)</div>
+  <div class="c" style="margin-bottom:20px;overflow-x:auto;">
+    <div class="c-title">Top Videos — THOUGHT Series (2026)</div>
     <table class="tbl">
-      <thead><tr><th>#</th><th>Title</th><th>Date</th><th>Views</th><th>Likes</th><th>Comments</th></tr></thead>
+      <thead><tr><th>#</th><th>Title</th><th>Date</th><th>Views</th><th>Likes</th></tr></thead>
       <tbody>
-        <tr><td>EP.6</td><td>แยกความแตกต่างระหว่าง ข้อเสนอแนะ และ ความคิดเห็น</td><td>Mar 4</td><td class="mono">378</td><td class="mono">8</td><td class="mono">0</td></tr>
-        <tr><td>EP.3</td><td>ทำไมธุรกิจของคุณจึงต้องการมุมมองจากผู้เชี่ยวชาญภายนอก</td><td>Feb 23</td><td class="mono">371</td><td class="mono">8</td><td class="mono">0</td></tr>
-        <tr><td>EP.4</td><td>เราเลือกเทคโนโลยีที่เหมาะสมให้ธุรกิจได้อย่างไร?</td><td>Feb 25</td><td class="mono">304</td><td class="mono">3</td><td class="mono">0</td></tr>
-        <tr><td>EP.5</td><td>กลยุทธ์ Email Marketing ที่ทำให้ลูกค้ารอเปิดอ่าน</td><td>Mar 2</td><td class="mono">274</td><td class="mono">4</td><td class="mono">0</td></tr>
-        <tr><td>EP.8</td><td>การใช้ Automation ในงานออกแบบเพื่อช่วยให้เวลาในการทำงาน</td><td>Mar 9</td><td class="mono">250</td><td class="mono">—</td><td class="mono">—</td></tr>
-        <tr><td>EP.7</td><td>ทุ่มงบโฆษณาแบบไม่ทดสอบ ผลลัพธ์ที่ได้อาจไม่คุ้มค่า</td><td>Mar 9</td><td class="mono">225</td><td class="mono">3</td><td class="mono">0</td></tr>
+        <tr><td>EP.6</td><td>แยกให้ออกระหว่าง ข้อเสนอแนะ และ ความคิดเห็น</td><td class="mono">Mar 4</td><td class="mono" style="font-weight:700;">378</td><td class="mono">8</td></tr>
+        <tr><td>EP.3</td><td>ทำไมธุรกิจของคุณจึงต้องการมุมมองจากผู้เชี่ยวชาญภายนอก</td><td class="mono">Feb 23</td><td class="mono" style="font-weight:700;">371</td><td class="mono">8</td></tr>
+        <tr><td>EP.4</td><td>เราเลือกเทคโนโลยีที่เหมาะสมให้ธุรกิจได้อย่างไร?</td><td class="mono">Feb 25</td><td class="mono">304</td><td class="mono">3</td></tr>
+        <tr><td>EP.5</td><td>กลยุทธ์ Email Marketing ที่ทำให้ลูกค้ารอเปิดอ่าน</td><td class="mono">Mar 2</td><td class="mono">274</td><td class="mono">4</td></tr>
+        <tr><td>EP.8</td><td>การใช้ Automation ในงานออกแบบ</td><td class="mono">Mar 9</td><td class="mono">250</td><td class="mono">—</td></tr>
+        <tr><td>EP.7</td><td>ทุ่มงบโฆษณาแบบไม่ทดสอบ ผลลัพธ์ที่ได้อาจไม่คุ้มค่า</td><td class="mono">Mar 9</td><td class="mono">225</td><td class="mono">3</td></tr>
       </tbody>
     </table>
   </div>
 
-  <div class="takeaway">
-    <div class="takeaway-title">Key Takeaway — TikTok</div>
-    <p>THOUGHT series กำลัง work หนัก — ยอด 4 สัปดาห์แซงทั้งปีก่อน Content เรื่อง Business consulting/Digital strategy ได้ reach คนกว้าง กระจายดีทั้ง กทม.+ต่างจังหวัด เป็น channel ที่ควร double-down ที่สุดตอนนี้ แต่ต้องแก้ปัญหา Comments = 0 ให้ได้ด้วยการเพิ่ม CTA ใน video</p>
+  <div class="insight green">
+    <div class="insight-h">Key Takeaway — TikTok</div>
+    <p>THOUGHT series กำลัง work หนัก — ยอด 4 สัปดาห์แซงทั้งปีก่อน กระจายดีทั้ง กทม.+ต่างจังหวัด ควร double-down ที่สุด แต่ต้องแก้ Comments = 0 ด้วยการเพิ่ม CTA ใน video</p>
   </div>
 </div>
 
-<!-- ===== YOUTUBE ===== -->
-<div class="section" id="sec-youtube">
-  <div class="sec-title"><span class="badge badge-youtube">YouTube</span> SUFFIX Channel <span class="line"></span></div>
+<!-- ===================== YOUTUBE ===================== -->
+<div class="section" id="s-youtube">
+  <div class="sec-h"><span class="ptag ptag-yt">YouTube</span> SUFFIX Channel</div>
   <div class="kpi-strip">
     <div class="kpi-item"><div class="kpi-label">Views (28d)</div><div class="kpi-num mono">1.2K</div></div>
     <div class="kpi-item"><div class="kpi-label">Engaged Views</div><div class="kpi-num mono">120</div></div>
     <div class="kpi-item"><div class="kpi-label">Likes</div><div class="kpi-num mono">10</div></div>
-    <div class="kpi-item"><div class="kpi-label">New Subscribers</div><div class="kpi-num mono">+1</div><div style="font-size:11px;color:var(--text-dim)">28d (+3 lifetime)</div></div>
+    <div class="kpi-item"><div class="kpi-label">New Subs (28d)</div><div class="kpi-num mono">+1</div></div>
     <div class="kpi-item"><div class="kpi-label">Monthly Audience</div><div class="kpi-num mono">88</div></div>
   </div>
 
-  <div class="grid grid-2" style="margin-bottom:24px;">
-    <div class="card">
-      <div class="card-title">Traffic Source — Shorts</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">Shorts feed</div><div class="bar-track"><div class="bar-fill" style="width:92.2%;background:#ff4444;">92.2%</div></div></div>
-        <div class="bar-row"><div class="bar-label">YT Search</div><div class="bar-track"><div class="bar-fill" style="width:3.5%;background:#ff444488;"></div></div><div class="bar-val">3.5%</div></div>
-        <div class="bar-row"><div class="bar-label">Channel page</div><div class="bar-track"><div class="bar-fill" style="width:2.1%;background:#ff444455;"></div></div><div class="bar-val">2.1%</div></div>
-      </div>
+  <div class="g g2" style="margin-bottom:20px;">
+    <div class="c">
+      <div class="c-title">Traffic Source — Shorts</div>
+      <div class="bar-row"><div class="bar-label">Shorts feed</div><div class="bar-track"><div class="bar-fill" style="width:92%;background:var(--youtube);color:#fff;">92.2%</div></div></div>
+      <div class="bar-row"><div class="bar-label">YT Search</div><div class="bar-track"><div class="bar-fill" style="width:3.5%;background:#e57373;"></div></div><div class="bar-val">3.5%</div></div>
+      <div class="bar-row"><div class="bar-label">Channel</div><div class="bar-track"><div class="bar-fill" style="width:2.1%;background:#ef9a9a;"></div></div><div class="bar-val">2.1%</div></div>
     </div>
-    <div class="card">
-      <div class="card-title" style="color:var(--red);">⚠ Retention Problem</div>
-      <div style="margin-top:12px; display:flex; gap:24px; align-items:center;">
-        <div>
-          <div style="font-size:40px;font-weight:700;color:var(--red);" class="mono">91.3%</div>
-          <div style="font-size:13px;color:var(--text-dim);">Swiped Away</div>
-        </div>
-        <div>
-          <div style="font-size:40px;font-weight:700;color:var(--green);" class="mono">8.7%</div>
-          <div style="font-size:13px;color:var(--text-dim);">Stayed to Watch</div>
-        </div>
+    <div class="c">
+      <div class="c-title" style="color:var(--down);">⚠ Retention Problem</div>
+      <div style="display:flex;gap:32px;margin-top:12px;">
+        <div><div class="mono" style="font-size:38px;font-weight:700;color:var(--down);">91.3%</div><div style="font-size:12px;color:var(--ink3);">Swiped Away</div></div>
+        <div><div class="mono" style="font-size:38px;font-weight:700;color:var(--up);">8.7%</div><div style="font-size:12px;color:var(--ink3);">Stayed to Watch</div></div>
       </div>
-      <div style="margin-top:12px;font-size:12px;color:var(--text-dim);">Avg % viewed: 19.3% — ต้องเพิ่ม hook ใน 2 วินาทีแรกให้ดึงคนดูหยุด</div>
+      <p style="margin-top:10px;font-size:12px;color:var(--ink3);">Avg % viewed: 19.3% — ต้องเพิ่ม hook ใน 2 วินาทีแรก</p>
     </div>
   </div>
 
-  <div class="grid grid-3" style="margin-bottom:24px;">
-    <div class="card">
-      <div class="card-title">Audience Behavior</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">New</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--purple);">100%</div></div></div>
-        <div class="bar-row"><div class="bar-label">Casual</div><div class="bar-track"><div class="bar-fill" style="width:1%;background:#555;"></div></div><div class="bar-val"><0.1%</div></div>
-        <div class="bar-row"><div class="bar-label">Regular</div><div class="bar-track"><div class="bar-fill" style="width:1%;background:#333;"></div></div><div class="bar-val"><0.1%</div></div>
-      </div>
-      <div style="margin-top:8px;font-size:12px;color:var(--orange);">ไม่มีคนกลับมาดูซ้ำเลย — ต้องสร้าง series ที่ทำให้คน subscribe</div>
+  <div class="g g3" style="margin-bottom:20px;">
+    <div class="c">
+      <div class="c-title">Audience Behavior</div>
+      <div class="bar-row"><div class="bar-label">New</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--ink);">100%</div></div></div>
+      <div class="bar-row"><div class="bar-label">Casual</div><div class="bar-track"><div class="bar-fill" style="width:1%;background:#ddd;"></div></div><div class="bar-val">&lt;0.1%</div></div>
+      <div class="bar-row"><div class="bar-label">Regular</div><div class="bar-track"><div class="bar-fill" style="width:1%;background:#eee;"></div></div><div class="bar-val">&lt;0.1%</div></div>
+      <p style="margin-top:8px;font-size:12px;color:var(--warn);">ไม่มีคนกลับมาดูซ้ำ — ต้องสร้าง series</p>
     </div>
-    <div class="card">
-      <div class="card-title">Device Type (Lifetime)</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">Mobile</div><div class="bar-track"><div class="bar-fill" style="width:83.8%;background:#ff4444;">83.8%</div></div></div>
-        <div class="bar-row"><div class="bar-label">Computer</div><div class="bar-track"><div class="bar-fill" style="width:6.7%;background:#ff444488;"></div></div><div class="bar-val">6.7%</div></div>
-        <div class="bar-row"><div class="bar-label">Tablet</div><div class="bar-track"><div class="bar-fill" style="width:6.2%;background:#ff444455;"></div></div><div class="bar-val">6.2%</div></div>
-        <div class="bar-row"><div class="bar-label">TV</div><div class="bar-track"><div class="bar-fill" style="width:3%;background:#ff444433;"></div></div><div class="bar-val">3.0%</div></div>
-      </div>
+    <div class="c">
+      <div class="c-title">Device Type (Lifetime)</div>
+      <div class="bar-row"><div class="bar-label">Mobile</div><div class="bar-track"><div class="bar-fill" style="width:84%;background:var(--ink);">83.8%</div></div></div>
+      <div class="bar-row"><div class="bar-label">Computer</div><div class="bar-track"><div class="bar-fill" style="width:6.7%;background:var(--ink3);"></div></div><div class="bar-val">6.7%</div></div>
+      <div class="bar-row"><div class="bar-label">Tablet</div><div class="bar-track"><div class="bar-fill" style="width:6.2%;background:var(--ink4);"></div></div><div class="bar-val">6.2%</div></div>
+      <div class="bar-row"><div class="bar-label">TV</div><div class="bar-track"><div class="bar-fill" style="width:3%;background:#c5bfb6;"></div></div><div class="bar-val">3.0%</div></div>
     </div>
-    <div class="card">
-      <div class="card-title">Top Shorts (28d Views)</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">EP.3</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#ff4444;">202</div></div></div>
-        <div class="bar-row"><div class="bar-label">EP.7</div><div class="bar-track"><div class="bar-fill" style="width:93%;background:#ff4444bb;">188</div></div></div>
-        <div class="bar-row"><div class="bar-label">EP.6</div><div class="bar-track"><div class="bar-fill" style="width:52%;background:#ff444488;">105</div></div></div>
-        <div class="bar-row"><div class="bar-label">EP.4</div><div class="bar-track"><div class="bar-fill" style="width:41%;background:#ff444455;">84</div></div></div>
-      </div>
+    <div class="c">
+      <div class="c-title">Top Shorts (28d)</div>
+      <div class="bar-row"><div class="bar-label">EP.3</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--youtube);color:#fff;">202</div></div></div>
+      <div class="bar-row"><div class="bar-label">EP.7</div><div class="bar-track"><div class="bar-fill" style="width:93%;background:#e57373;color:#fff;">188</div></div></div>
+      <div class="bar-row"><div class="bar-label">EP.6</div><div class="bar-track"><div class="bar-fill" style="width:52%;background:#ef9a9a;">105</div></div></div>
+      <div class="bar-row"><div class="bar-label">EP.4</div><div class="bar-track"><div class="bar-fill" style="width:41%;background:#ffcdd2;">84</div></div></div>
     </div>
   </div>
 
-  <div class="takeaway">
-    <div class="takeaway-title">Key Takeaway — YouTube</div>
-    <p>Channel เพิ่งกลับมา active ใหม่ — ดีที่ Views ดี (1.2K) แต่ปัญหาใหญ่คือ Retention ต่ำมาก (91.3% swipe away) และไม่มี Regular viewers เลย ต้องแก้ Hook ใน 2 วิแรก และทำ content ให้ต่อเนื่องเพื่อดึง subscriber กลับมาซ้ำ Content ตอนนี้ทำเป็น Shorts เท่านั้น — ถ้าอยาก build authority อาจต้องมี Long-form ด้วย</p>
+  <div class="insight red">
+    <div class="insight-h">Key Takeaway — YouTube</div>
+    <p>Views ดี (1.2K) แต่ Retention ต่ำมาก (91.3% swipe away) ไม่มี Regular viewers ต้องแก้ Hook ใน 2 วิแรก ปัจจุบันทำแต่ Shorts — ถ้าอยากสร้าง authority ควรเพิ่ม Long-form ด้วย</p>
   </div>
 </div>
 
-<!-- ===== INSTAGRAM ===== -->
-<div class="section" id="sec-instagram">
-  <div class="sec-title"><span class="badge badge-instagram">Instagram</span> <span class="line"></span></div>
+<!-- ===================== INSTAGRAM ===================== -->
+<div class="section" id="s-instagram">
+  <div class="sec-h"><span class="ptag ptag-ig">Instagram</span></div>
   <div class="kpi-strip">
-    <div class="kpi-item"><div class="kpi-label">Followers</div><div class="kpi-num mono">972</div><div class="card-change down">-0.4% (30d)</div></div>
+    <div class="kpi-item"><div class="kpi-label">Followers</div><div class="kpi-num mono">972</div><div style="margin-top:2px;"><span class="pill pill-down">-0.4% (30d)</span></div></div>
     <div class="kpi-item"><div class="kpi-label">Views (30d)</div><div class="kpi-num mono">148</div></div>
     <div class="kpi-item"><div class="kpi-label">Views (90d)</div><div class="kpi-num mono">527</div></div>
-    <div class="kpi-item"><div class="kpi-label">Accounts Reached (30d)</div><div class="kpi-num mono">78</div><div class="card-change up">+1,460%</div></div>
-    <div class="kpi-item"><div class="kpi-label">Profile Activity (90d)</div><div class="kpi-num mono">57</div><div class="card-change down">-25%</div></div>
+    <div class="kpi-item"><div class="kpi-label">Reached (30d)</div><div class="kpi-num mono">78</div><div style="margin-top:2px;"><span class="pill pill-up">+1,460%</span></div></div>
+    <div class="kpi-item"><div class="kpi-label">Profile Activity (90d)</div><div class="kpi-num mono">57</div><div style="margin-top:2px;"><span class="pill pill-down">-25%</span></div></div>
   </div>
 
-  <div class="grid grid-2" style="margin-bottom:24px;">
-    <div class="card">
-      <div class="card-title">Views Breakdown (30d)</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">Followers</div><div class="bar-track"><div class="bar-fill" style="width:60.8%;background:#e1306c;">60.8%</div></div></div>
-        <div class="bar-row"><div class="bar-label">Non-followers</div><div class="bar-track"><div class="bar-fill" style="width:39.2%;background:#833ab4;">39.2%</div></div></div>
-      </div>
-      <div style="margin-top:16px; font-size:12px; color:var(--text-dim);">
-        <strong>Content Type (30d):</strong> Stories 60.8% / Posts 39.2%<br>
-        <strong>Content Type (90d):</strong> Posts 82.9% / Stories 17.1%<br>
+  <div class="g g2" style="margin-bottom:20px;">
+    <div class="c">
+      <div class="c-title">Views Source (30d)</div>
+      <div class="bar-row"><div class="bar-label">Followers</div><div class="bar-track"><div class="bar-fill" style="width:60.8%;background:var(--instagram);color:#fff;">60.8%</div></div></div>
+      <div class="bar-row"><div class="bar-label">Non-followers</div><div class="bar-track"><div class="bar-fill" style="width:39.2%;background:#9c27b0;color:#fff;">39.2%</div></div></div>
+      <div style="margin-top:14px;font-size:12px;color:var(--ink3);">
+        <strong>Content Type 30d:</strong> Stories 60.8% / Posts 39.2%<br>
+        <strong>Content Type 90d:</strong> Posts 82.9% / Stories 17.1%<br>
         <strong>Top Content:</strong> THOUGHT EP.1 — 90 views (Feb 19)
       </div>
     </div>
-    <div class="card">
-      <div class="card-title">Follower Growth (90d)</div>
-      <div style="margin-top:12px;">
-        <table class="tbl">
-          <thead><tr><th>Metric</th><th>30 Days</th><th>90 Days</th></tr></thead>
-          <tbody>
-            <tr><td>Net Growth</td><td class="mono" style="color:var(--red);">-2</td><td class="mono" style="color:var(--red);">-5</td></tr>
-            <tr><td>New Follows</td><td class="mono">1</td><td class="mono">7</td></tr>
-            <tr><td>Unfollows</td><td class="mono">3</td><td class="mono">12</td></tr>
-            <tr><td>External Link Taps</td><td class="mono">—</td><td class="mono">3 (+200%)</td></tr>
-            <tr><td>Profile Visits</td><td class="mono">—</td><td class="mono">54 (-28%)</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="c">
+      <div class="c-title">Follower Growth</div>
+      <table class="tbl">
+        <thead><tr><th></th><th>30 Days</th><th>90 Days</th></tr></thead>
+        <tbody>
+          <tr><td>Net Growth</td><td class="mono" style="color:var(--down);font-weight:700;">-2</td><td class="mono" style="color:var(--down);font-weight:700;">-5</td></tr>
+          <tr><td>New Follows</td><td class="mono">1</td><td class="mono">7</td></tr>
+          <tr><td>Unfollows</td><td class="mono">3</td><td class="mono">12</td></tr>
+          <tr><td>External Link Taps</td><td class="mono">—</td><td class="mono">3 <span class="pill pill-up" style="font-size:10px;">+200%</span></td></tr>
+          <tr><td>Profile Visits</td><td class="mono">—</td><td class="mono">54 <span class="pill pill-down" style="font-size:10px;">-28%</span></td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
-  <div class="grid grid-3" style="margin-bottom:24px;">
-    <div class="card">
-      <div class="card-title">Age Range</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">35-44</div><div class="bar-track"><div class="bar-fill" style="width:86%;background:#e1306c;">43.2%</div></div></div>
-        <div class="bar-row"><div class="bar-label">25-34</div><div class="bar-track"><div class="bar-fill" style="width:85%;background:#833ab4;">42.4%</div></div></div>
-        <div class="bar-row"><div class="bar-label">45-54</div><div class="bar-track"><div class="bar-fill" style="width:18%;background:#e1306c55;"></div></div><div class="bar-val">9.2%</div></div>
-        <div class="bar-row"><div class="bar-label">18-24</div><div class="bar-track"><div class="bar-fill" style="width:6%;background:#e1306c33;"></div></div><div class="bar-val">3.2%</div></div>
+  <div class="g g3" style="margin-bottom:20px;">
+    <div class="c">
+      <div class="c-title">Age Range</div>
+      <div class="bar-row"><div class="bar-label">35-44</div><div class="bar-track"><div class="bar-fill" style="width:86%;background:var(--instagram);color:#fff;">43.2%</div></div></div>
+      <div class="bar-row"><div class="bar-label">25-34</div><div class="bar-track"><div class="bar-fill" style="width:85%;background:#9c27b0;color:#fff;">42.4%</div></div></div>
+      <div class="bar-row"><div class="bar-label">45-54</div><div class="bar-track"><div class="bar-fill" style="width:18%;background:#ce93d8;"></div></div><div class="bar-val">9.2%</div></div>
+      <div class="bar-row"><div class="bar-label">18-24</div><div class="bar-track"><div class="bar-fill" style="width:6%;background:#e1bee7;"></div></div><div class="bar-val">3.2%</div></div>
+    </div>
+    <div class="c">
+      <div class="c-title">Gender & Peak Time</div>
+      <div class="bar-row"><div class="bar-label">Men</div><div class="bar-track"><div class="bar-fill" style="width:58.8%;background:var(--ink);">58.8%</div></div></div>
+      <div class="bar-row"><div class="bar-label">Women</div><div class="bar-track"><div class="bar-fill" style="width:41.2%;background:var(--instagram);color:#fff;">41.2%</div></div></div>
+      <div style="margin-top:14px;padding:12px 16px;background:var(--surface2);border-radius:8px;">
+        <div style="font-size:11px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;">Peak Active Time</div>
+        <div style="font-size:14px;font-weight:700;margin-top:4px;">09.00 – 21.00 น. (สูงสุด 15.00 – 18.00 น.)</div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-title">Gender & Active Time</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">Men</div><div class="bar-track"><div class="bar-fill" style="width:58.8%;background:#e1306c;">58.8%</div></div></div>
-        <div class="bar-row"><div class="bar-label">Women</div><div class="bar-track"><div class="bar-fill" style="width:41.2%;background:#833ab4;">41.2%</div></div></div>
-      </div>
-      <div style="margin-top:16px; padding:12px; background:var(--surface2); border-radius:8px;">
-        <div style="font-size:12px;color:var(--lime);font-weight:700;margin-bottom:4px;">Peak Active Time</div>
-        <div style="font-size:13px;color:var(--text);">09.00 – 21.00 น.</div>
-        <div style="font-size:13px;color:var(--text);font-weight:700;">สูงสุด: 15.00 – 18.00 น.</div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-title">Top Locations</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">Bangkok</div><div class="bar-track"><div class="bar-fill" style="width:57%;background:#e1306c;">57.3%</div></div></div>
-        <div class="bar-row"><div class="bar-label">นนทบุรี</div><div class="bar-track"><div class="bar-fill" style="width:2.5%;background:#e1306c88;"></div></div><div class="bar-val">2.5%</div></div>
-        <div class="bar-row"><div class="bar-label">ปากเกร็ด</div><div class="bar-track"><div class="bar-fill" style="width:2.3%;background:#e1306c55;"></div></div><div class="bar-val">2.3%</div></div>
-      </div>
-      <div style="margin-top:8px;font-size:11px;color:var(--text-muted);">Thailand 81.7% | US 2.0% | UK 1.7%</div>
+    <div class="c">
+      <div class="c-title">Top Locations</div>
+      <div class="bar-row"><div class="bar-label">Bangkok</div><div class="bar-track"><div class="bar-fill" style="width:57%;background:var(--instagram);color:#fff;">57.3%</div></div></div>
+      <div class="bar-row"><div class="bar-label">นนทบุรี</div><div class="bar-track"><div class="bar-fill" style="width:5%;background:#ce93d8;"></div></div><div class="bar-val">2.5%</div></div>
+      <div class="bar-row"><div class="bar-label">ปากเกร็ด</div><div class="bar-track"><div class="bar-fill" style="width:4.6%;background:#e1bee7;"></div></div><div class="bar-val">2.3%</div></div>
+      <p style="margin-top:8px;font-size:11px;color:var(--ink4);">Thailand 81.7% | US 2.0% | UK 1.7%</p>
     </div>
   </div>
 
-  <div class="takeaway">
-    <div class="takeaway-title">Key Takeaway — Instagram</div>
-    <p>Followers ลดต่อเนื่อง (-5 ใน 90 วัน) และ Reach ต่ำมาก (78 accounts จาก 972 followers) แต่กลุ่มอายุ 25-44 (รวม 85.6%) ตรง target ของ SUFFIX ดี ปัญหาคือ Content frequency ต่ำ + ไม่ค่อยมี Post ใหม่ IG ช่วงนี้เน้น Stories มากกว่า Post — ควรกลับมาเน้น Reels/Posts เพราะดึง Non-followers ได้มากกว่า</p>
+  <div class="insight red">
+    <div class="insight-h">Key Takeaway — Instagram</div>
+    <p>Followers ลดต่อเนื่อง (-5 ใน 90 วัน) Reach ต่ำมาก (78 จาก 972 followers = 8%) กลุ่ม 25-44 ตรง target ดี แต่ Content frequency ต่ำ IG ลด organic reach ต่อเนื่อง — ควรกลับมาเน้น Reels (repurpose จาก TikTok) + Stories ทุกวัน</p>
   </div>
 </div>
 
-<!-- ===== FACEBOOK ===== -->
-<div class="section" id="sec-facebook">
-  <div class="sec-title"><span class="badge badge-facebook">Facebook</span> <span class="line"></span></div>
+<!-- ===================== FACEBOOK ===================== -->
+<div class="section" id="s-facebook">
+  <div class="sec-h"><span class="ptag ptag-fb">Facebook</span></div>
   <div class="kpi-strip">
-    <div class="kpi-item"><div class="kpi-label">Views (28d)</div><div class="kpi-num mono">764</div><div class="card-change up">+226.5%</div></div>
-    <div class="kpi-item"><div class="kpi-label">Viewers (28d)</div><div class="kpi-num mono">378</div><div class="card-change up">+500%</div></div>
-    <div class="kpi-item"><div class="kpi-label">Interactions (28d)</div><div class="kpi-num mono">19</div><div class="card-change up">+100%</div></div>
-    <div class="kpi-item"><div class="kpi-label">Visits (28d)</div><div class="kpi-num mono">75</div><div class="card-change up">+5.6%</div></div>
-    <div class="kpi-item"><div class="kpi-label">New Follows (28d)</div><div class="kpi-num mono">1</div><div class="card-change neutral">0%</div></div>
+    <div class="kpi-item"><div class="kpi-label">Views (28d)</div><div class="kpi-num mono">764</div><div style="margin-top:2px;"><span class="pill pill-up">+226.5%</span></div></div>
+    <div class="kpi-item"><div class="kpi-label">Viewers (28d)</div><div class="kpi-num mono">378</div><div style="margin-top:2px;"><span class="pill pill-up">+500%</span></div></div>
+    <div class="kpi-item"><div class="kpi-label">Interactions</div><div class="kpi-num mono">19</div><div style="margin-top:2px;"><span class="pill pill-up">+100%</span></div></div>
+    <div class="kpi-item"><div class="kpi-label">Visits (28d)</div><div class="kpi-num mono">75</div><div style="margin-top:2px;"><span class="pill pill-up">+5.6%</span></div></div>
+    <div class="kpi-item"><div class="kpi-label">New Follows</div><div class="kpi-num mono">1</div></div>
   </div>
 
-  <div class="grid grid-2" style="margin-bottom:24px;">
-    <div class="card">
-      <div class="card-title">How People Find Content (28d)</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">Reels</div><div class="bar-track"><div class="bar-fill" style="width:67.5%;background:#1877f2;">67.5%</div></div></div>
-        <div class="bar-row"><div class="bar-label">Feed</div><div class="bar-track"><div class="bar-fill" style="width:18.6%;background:#1877f2bb;">18.6%</div></div></div>
-        <div class="bar-row"><div class="bar-label">Your Page</div><div class="bar-track"><div class="bar-fill" style="width:6.6%;background:#1877f288;"></div></div><div class="bar-val">6.6%</div></div>
-        <div class="bar-row"><div class="bar-label">Unavailable</div><div class="bar-track"><div class="bar-fill" style="width:5.5%;background:#1877f255;"></div></div><div class="bar-val">5.5%</div></div>
-        <div class="bar-row"><div class="bar-label">Stories</div><div class="bar-track"><div class="bar-fill" style="width:1.8%;background:#1877f233;"></div></div><div class="bar-val">1.8%</div></div>
-      </div>
+  <div class="g g2" style="margin-bottom:20px;">
+    <div class="c">
+      <div class="c-title">How People Find Content</div>
+      <div class="bar-row"><div class="bar-label">Reels</div><div class="bar-track"><div class="bar-fill" style="width:67.5%;background:var(--facebook);color:#fff;">67.5%</div></div></div>
+      <div class="bar-row"><div class="bar-label">Feed</div><div class="bar-track"><div class="bar-fill" style="width:18.6%;background:#64b5f6;">18.6%</div></div></div>
+      <div class="bar-row"><div class="bar-label">Your Page</div><div class="bar-track"><div class="bar-fill" style="width:6.6%;background:#90caf9;"></div></div><div class="bar-val">6.6%</div></div>
+      <div class="bar-row"><div class="bar-label">Stories</div><div class="bar-track"><div class="bar-fill" style="width:1.8%;background:#bbdefb;"></div></div><div class="bar-val">1.8%</div></div>
     </div>
-    <div class="card">
-      <div class="card-title">Lifetime Totals (2023-2026)</div>
-      <div style="margin-top:12px;">
-        <table class="tbl">
-          <thead><tr><th>Metric</th><th>Total</th><th>Change</th></tr></thead>
-          <tbody>
-            <tr><td>Content Interactions</td><td class="mono">316</td><td class="card-change up">+100%</td></tr>
-            <tr><td>Link Clicks</td><td class="mono">161</td><td class="card-change up">+100%</td></tr>
-            <tr><td>Page Visits</td><td class="mono">3K</td><td class="card-change up">+100%</td></tr>
-            <tr><td>Follows</td><td class="mono">70</td><td class="card-change down">-44.4%</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="c">
+      <div class="c-title">Lifetime Totals (2023-2026)</div>
+      <table class="tbl">
+        <thead><tr><th>Metric</th><th>Total</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td>Interactions</td><td class="mono">316</td><td><span class="pill pill-up">+100%</span></td></tr>
+          <tr><td>Link Clicks</td><td class="mono">161</td><td><span class="pill pill-up">+100%</span></td></tr>
+          <tr><td>Page Visits</td><td class="mono">3K</td><td><span class="pill pill-up">+100%</span></td></tr>
+          <tr><td>Follows</td><td class="mono">70</td><td><span class="pill pill-down">-44.4%</span></td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
-  <div class="grid grid-3" style="margin-bottom:24px;">
-    <div class="card">
-      <div class="card-title">Age & Gender (Lifetime)</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">35-44</div><div class="bar-track"><div class="bar-fill" style="width:84%;background:#1877f2;">41.9%</div></div></div>
-        <div class="bar-row"><div class="bar-label">25-34</div><div class="bar-track"><div class="bar-fill" style="width:79%;background:#1877f2bb;">39.5%</div></div></div>
-        <div class="bar-row"><div class="bar-label">45-54</div><div class="bar-track"><div class="bar-fill" style="width:22%;background:#1877f288;"></div></div><div class="bar-val">11.1%</div></div>
-        <div class="bar-row"><div class="bar-label">18-24</div><div class="bar-track"><div class="bar-fill" style="width:6%;background:#1877f255;"></div></div><div class="bar-val">2.9%</div></div>
-      </div>
-      <div style="margin-top:8px;font-size:11px;color:var(--text-dim);">Men เด่น (M 25-34: 22.4%, W 17.2% | M 35-44: 23.2%, W 18.8%)</div>
+  <div class="g g3" style="margin-bottom:20px;">
+    <div class="c">
+      <div class="c-title">Age & Gender (Lifetime)</div>
+      <div class="bar-row"><div class="bar-label">35-44</div><div class="bar-track"><div class="bar-fill" style="width:84%;background:var(--facebook);color:#fff;">41.9%</div></div></div>
+      <div class="bar-row"><div class="bar-label">25-34</div><div class="bar-track"><div class="bar-fill" style="width:79%;background:#64b5f6;">39.5%</div></div></div>
+      <div class="bar-row"><div class="bar-label">45-54</div><div class="bar-track"><div class="bar-fill" style="width:22%;background:#90caf9;"></div></div><div class="bar-val">11.1%</div></div>
+      <div class="bar-row"><div class="bar-label">18-24</div><div class="bar-track"><div class="bar-fill" style="width:6%;background:#bbdefb;"></div></div><div class="bar-val">2.9%</div></div>
+      <p style="margin-top:6px;font-size:11px;color:var(--ink4);">Men เด่นกว่า (M 25-34: 22.4% vs W 17.2%)</p>
     </div>
-    <div class="card">
-      <div class="card-title">Top Countries (Lifetime)</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">Thailand</div><div class="bar-track"><div class="bar-fill" style="width:81%;background:#1877f2;">80.9%</div></div></div>
-        <div class="bar-row"><div class="bar-label" style="color:var(--orange);">Malawi ⚠</div><div class="bar-track"><div class="bar-fill" style="width:9.3%;background:var(--orange);"></div></div><div class="bar-val">9.3%</div></div>
-        <div class="bar-row"><div class="bar-label">Singapore</div><div class="bar-track"><div class="bar-fill" style="width:2%;background:#1877f255;"></div></div><div class="bar-val">2.0%</div></div>
-      </div>
-      <div style="margin-top:8px;font-size:11px;color:var(--orange);">⚠ Malawi 9.3% เป็น outlier — ตรวจสอบว่าเป็น bot/fake followers หรือไม่</div>
+    <div class="c">
+      <div class="c-title">Top Countries (Lifetime)</div>
+      <div class="bar-row"><div class="bar-label">Thailand</div><div class="bar-track"><div class="bar-fill" style="width:81%;background:var(--facebook);color:#fff;">80.9%</div></div></div>
+      <div class="bar-row"><div class="bar-label" style="color:var(--warn);">Malawi ⚠</div><div class="bar-track"><div class="bar-fill" style="width:9.3%;background:var(--warn);color:#fff;">9.3%</div></div></div>
+      <div class="bar-row"><div class="bar-label">Singapore</div><div class="bar-track"><div class="bar-fill" style="width:2%;background:#bbdefb;"></div></div><div class="bar-val">2.0%</div></div>
+      <p style="margin-top:6px;font-size:11px;color:var(--warn);">⚠ Malawi 9.3% outlier — ตรวจสอบ bot/fake</p>
     </div>
-    <div class="card">
-      <div class="card-title">Top Cities (Lifetime)</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">Bangkok</div><div class="bar-track"><div class="bar-fill" style="width:76.5%;background:#1877f2;">76.5%</div></div></div>
-        <div class="bar-row"><div class="bar-label">Lilongwe</div><div class="bar-track"><div class="bar-fill" style="width:6.3%;background:var(--orange);"></div></div><div class="bar-val">6.3%</div></div>
-        <div class="bar-row"><div class="bar-label">Nonthaburi</div><div class="bar-track"><div class="bar-fill" style="width:3.1%;background:#1877f255;"></div></div><div class="bar-val">3.1%</div></div>
-      </div>
+    <div class="c">
+      <div class="c-title">Top Cities (Lifetime)</div>
+      <div class="bar-row"><div class="bar-label">Bangkok</div><div class="bar-track"><div class="bar-fill" style="width:77%;background:var(--facebook);color:#fff;">76.5%</div></div></div>
+      <div class="bar-row"><div class="bar-label">Lilongwe</div><div class="bar-track"><div class="bar-fill" style="width:6.3%;background:var(--warn);"></div></div><div class="bar-val">6.3%</div></div>
+      <div class="bar-row"><div class="bar-label">Nonthaburi</div><div class="bar-track"><div class="bar-fill" style="width:3.1%;background:#90caf9;"></div></div><div class="bar-val">3.1%</div></div>
     </div>
   </div>
 
-  <div class="takeaway">
-    <div class="takeaway-title">Key Takeaway — Facebook</div>
-    <p>Views และ Viewers พุ่งขึ้นดีมาก (+226% / +500%) — Reels เป็น driver หลัก (67.5%) แต่ Follows แทบไม่โต (28d ได้แค่ 1) แสดงว่า Content ดึงคนดูได้ แต่ไม่แข็งพอให้กด Follow ควรเพิ่ม CTA ให้ชัดใน Reels และตรวจสอบ Malawi audience ที่ผิดปกติ</p>
+  <div class="insight">
+    <div class="insight-h">Key Takeaway — Facebook</div>
+    <p>Views พุ่ง +226% — Reels เป็น driver หลัก (67.5%) แต่ Follow conversion ต่ำ (28d ได้แค่ 1) ควรเพิ่ม CTA ใน Reels ตรวจสอบ Malawi audience ที่ผิดปกติ</p>
   </div>
 </div>
 
-<!-- ===== OTHERS (Spotify, Lemon8, Blockdit) ===== -->
-<div class="section" id="sec-others">
-  <div class="sec-title"><span class="badge badge-spotify">Spotify</span> Podcast <span class="line"></span></div>
-  <div class="grid grid-3" style="margin-bottom:24px;">
-    <div class="card">
-      <div class="card-title">Gender (30d)</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">Male</div><div class="bar-track"><div class="bar-fill" style="width:62.5%;background:#1db954;">62.5%</div></div></div>
-        <div class="bar-row"><div class="bar-label">Female</div><div class="bar-track"><div class="bar-fill" style="width:25%;background:#1db954bb;">25.0%</div></div></div>
-        <div class="bar-row"><div class="bar-label">N/A</div><div class="bar-track"><div class="bar-fill" style="width:12.5%;background:#1db95455;"></div></div><div class="bar-val">12.5%</div></div>
-      </div>
+<!-- ===================== OTHERS ===================== -->
+<div class="section" id="s-others">
+  <div class="sec-h"><span class="ptag ptag-sp">Spotify</span> Podcast</div>
+  <div class="g g3" style="margin-bottom:20px;">
+    <div class="c">
+      <div class="c-title">Gender (30d)</div>
+      <div class="bar-row"><div class="bar-label">Male</div><div class="bar-track"><div class="bar-fill" style="width:62.5%;background:var(--spotify);color:#fff;">62.5%</div></div></div>
+      <div class="bar-row"><div class="bar-label">Female</div><div class="bar-track"><div class="bar-fill" style="width:25%;background:#66bb6a;">25%</div></div></div>
+      <div class="bar-row"><div class="bar-label">N/A</div><div class="bar-track"><div class="bar-fill" style="width:12.5%;background:#a5d6a7;">12.5%</div></div></div>
     </div>
-    <div class="card">
-      <div class="card-title">Age (30d)</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">28-34</div><div class="bar-track"><div class="bar-fill" style="width:75%;background:#1db954;">37.5%</div></div></div>
-        <div class="bar-row"><div class="bar-label">35-44</div><div class="bar-track"><div class="bar-fill" style="width:75%;background:#1db954bb;">37.5%</div></div></div>
-        <div class="bar-row"><div class="bar-label">45-59</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:#1db95488;">25.0%</div></div></div>
-      </div>
+    <div class="c">
+      <div class="c-title">Age (30d)</div>
+      <div class="bar-row"><div class="bar-label">28-34</div><div class="bar-track"><div class="bar-fill" style="width:75%;background:var(--spotify);color:#fff;">37.5%</div></div></div>
+      <div class="bar-row"><div class="bar-label">35-44</div><div class="bar-track"><div class="bar-fill" style="width:75%;background:#66bb6a;">37.5%</div></div></div>
+      <div class="bar-row"><div class="bar-label">45-59</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:#a5d6a7;">25%</div></div></div>
     </div>
-    <div class="card">
-      <div class="card-title">Device (30d)</div>
-      <div style="margin-top:12px;">
-        <div class="bar-row"><div class="bar-label">iPhone</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:#1db954;">50%</div></div></div>
-        <div class="bar-row"><div class="bar-label">Android</div><div class="bar-track"><div class="bar-fill" style="width:37.5%;background:#1db954bb;">37.5%</div></div></div>
-        <div class="bar-row"><div class="bar-label">Mac</div><div class="bar-track"><div class="bar-fill" style="width:12.5%;background:#1db95455;">12.5%</div></div></div>
-      </div>
+    <div class="c">
+      <div class="c-title">Device (30d)</div>
+      <div class="bar-row"><div class="bar-label">iPhone</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--spotify);color:#fff;">50%</div></div></div>
+      <div class="bar-row"><div class="bar-label">Android</div><div class="bar-track"><div class="bar-fill" style="width:37.5%;background:#66bb6a;">37.5%</div></div></div>
+      <div class="bar-row"><div class="bar-label">Mac</div><div class="bar-track"><div class="bar-fill" style="width:12.5%;background:#a5d6a7;">12.5%</div></div></div>
     </div>
   </div>
-  <div class="takeaway" style="margin-bottom:32px;">
-    <div class="takeaway-title">Spotify Note</div>
-    <p>Audience เล็กมาก (~8 listeners) แต่ตรง target — Male 28-44 ปี ที่ใช้ iPhone เป็น B2B professionals Podcast เหมาะเป็น supplementary channel สำหรับ thought leadership ไม่ต้องวัด Reach แต่ดู retention per episode แทน</p>
+  <div class="insight blue" style="margin-bottom:28px;">
+    <div class="insight-h">Spotify Note</div>
+    <p>Audience เล็ก (~8) แต่ตรง target — Male 28-44 ใช้ iPhone เป็น B2B professionals Podcast เหมาะเป็น supplementary channel สำหรับ thought leadership ดู retention per episode แทน reach</p>
   </div>
 
-  <div class="sec-title"><span class="badge badge-lemon8">Lemon8</span> @suffix.works <span class="line"></span></div>
-  <div class="grid grid-3" style="margin-bottom:24px;">
-    <div class="card">
-      <div class="card-title">Week 1 — Feb 14-20</div>
-      <div style="margin-top:12px;">
-        <div class="kpi-label">Impressions</div><div class="kpi-num mono">31.4K</div><div class="card-change up">+232</div>
-        <div style="margin-top:8px;font-size:12px;color:var(--text-dim);">กลับมาโพสต์หลังหายไป 246 วัน<br>2 posts / +1 follower</div>
-      </div>
+  <div class="sec-h"><span class="ptag ptag-l8">Lemon8</span> @suffix.works</div>
+  <div class="g g3" style="margin-bottom:20px;">
+    <div class="c">
+      <div class="c-title">Week 1 — Feb 14-20</div>
+      <div class="kpi-num mono">31.4K</div><div class="c-sub">Impressions <span class="pill pill-up" style="margin-left:4px;">+232</span></div>
+      <p style="margin-top:8px;font-size:12px;color:var(--ink3);">กลับมาโพสต์หลังหายไป 246 วัน · 2 posts · +1 follower</p>
     </div>
-    <div class="card">
-      <div class="card-title">Week 2 — Feb 21-27</div>
-      <div style="margin-top:12px;">
-        <div class="kpi-label">Impressions</div><div class="kpi-num mono">31.6K</div><div class="card-change up">+144</div>
-        <div style="margin-top:8px;font-size:12px;color:var(--text-dim);">2 posts ต่อเนื่อง<br>27 Followers / 178 Likes & Saves</div>
-      </div>
+    <div class="c">
+      <div class="c-title">Week 2 — Feb 21-27</div>
+      <div class="kpi-num mono">31.6K</div><div class="c-sub">Impressions <span class="pill pill-up" style="margin-left:4px;">+144</span></div>
+      <p style="margin-top:8px;font-size:12px;color:var(--ink3);">2 posts ต่อเนื่อง · 27 Followers · 178 Likes & Saves</p>
     </div>
-    <div class="card">
-      <div class="card-title">Week 3 — Feb 28 - Mar 6</div>
-      <div style="margin-top:12px;">
-        <div class="kpi-label">Impressions</div><div class="kpi-num mono">31.7K</div><div class="card-change up">+94</div>
-        <div style="margin-top:8px;font-size:12px;color:var(--text-dim);">2 posts · 3 สัปดาห์ต่อเนื่อง<br>27 Followers / 178 Likes & Saves</div>
-      </div>
+    <div class="c">
+      <div class="c-title">Week 3 — Feb 28 - Mar 6</div>
+      <div class="kpi-num mono">31.7K</div><div class="c-sub">Impressions <span class="pill pill-up" style="margin-left:4px;">+94</span></div>
+      <p style="margin-top:8px;font-size:12px;color:var(--ink3);">3 สัปดาห์ต่อเนื่อง · 2 posts/wk</p>
     </div>
   </div>
-  <div class="takeaway" style="margin-bottom:32px;">
-    <div class="takeaway-title">Lemon8 — High Potential!</div>
-    <p>Impressions 31.7K จาก 27 followers = Impression/follower ratio สูงมาก (~1,174x) แสดงว่า Lemon8 algorithm push content ให้ดีมาก Content แนว Business Knowledge ตอบโจทย์ platform นี้ ควรเพิ่ม post frequency และ optimize SEO caption เพื่อดึง followers เข้ามามากขึ้น</p>
+  <div class="insight green" style="margin-bottom:28px;">
+    <div class="insight-h">Lemon8 — High Potential!</div>
+    <p>31.7K impressions จาก 27 followers = Impression/follower ratio ~1,174x — สูงสุดในทุก channel Algorithm push content ให้ดีมาก ควรเพิ่ม post frequency + optimize caption เพื่อดึง followers</p>
   </div>
 
-  <div class="sec-title"><span class="badge badge-blockdit">Blockdit</span> <span class="line"></span></div>
-  <div class="card" style="margin-bottom:24px;">
-    <div style="display:flex;gap:32px;align-items:center;">
-      <div>
-        <div class="card-title">Followers</div>
-        <div class="kpi-num mono">5</div>
-        <div style="font-size:12px;color:var(--text-dim);margin-top:4px;">Male: 2 (40%) / Unknown: 3 (60%)</div>
-      </div>
-      <div>
-        <div class="card-title">Age</div>
-        <div style="font-size:13px;color:var(--text-dim);margin-top:4px;">25-34: 3 คน / 35-44: 1 คน</div>
-      </div>
-      <div style="padding:12px 20px;background:var(--surface2);border-radius:8px;">
-        <div style="font-size:12px;color:var(--text-muted);">Recommendation: ยังไม่ต้อง invest เพิ่ม — ใช้เป็น content repurpose จาก TikTok/Lemon8 ถ้ามี bandwidth</div>
+  <div class="sec-h"><span class="ptag ptag-bd">Blockdit</span></div>
+  <div class="c" style="margin-bottom:20px;">
+    <div style="display:flex;gap:32px;align-items:center;flex-wrap:wrap;">
+      <div><div class="c-title">Followers</div><div class="kpi-num mono">5</div><div class="c-sub">Male 2 (40%) / Unknown 3 (60%)</div></div>
+      <div><div class="c-title">Age</div><div class="c-sub">25-34: 3 คน / 35-44: 1 คน</div></div>
+      <div style="flex:1;min-width:200px;padding:12px 16px;background:var(--surface2);border-radius:8px;font-size:12px;color:var(--ink3);">
+        <strong>Recommendation:</strong> ยังไม่ต้อง invest เพิ่ม — ใช้เป็น content repurpose จาก TikTok/Lemon8 ถ้ามี bandwidth
       </div>
     </div>
   </div>
 </div>
 
-<!-- ===== KEY TAKEAWAYS & DIRECTION ===== -->
-<div class="section" id="sec-direction">
-  <div class="sec-title">Key Takeaways & Strategic Direction <span class="line"></span></div>
-  <div class="sec-sub">สรุป Insights สำคัญและทิศทางที่ควร Focus สำหรับ Organic Social Media ของ SUFFIX</div>
+<!-- ===================== DIRECTION ===================== -->
+<div class="section" id="s-direction">
+  <div class="sec-h">Key Takeaways & Strategic Direction</div>
+  <div class="sec-sub">สรุป Insights และทิศทาง Organic Social Media ของ SUFFIX</div>
 
-  <!-- Priority Matrix -->
-  <div class="card" style="margin-bottom:24px;">
-    <div class="card-title" style="margin-bottom:16px;">Channel Priority Matrix — Organic Focus</div>
+  <div class="c" style="margin-bottom:24px;overflow-x:auto;">
+    <div class="c-title" style="margin-bottom:14px;">Channel Priority Matrix — Organic Focus</div>
     <table class="tbl">
       <thead><tr><th>Priority</th><th>Channel</th><th>Why</th><th>Primary KPI</th><th>Secondary KPI</th></tr></thead>
       <tbody>
-        <tr style="background:var(--surface2);">
-          <td><span style="color:var(--lime);font-weight:700;">★★★ PRIMARY</span></td>
-          <td><span class="badge badge-tiktok">TikTok</span></td>
-          <td style="font-size:12px;">Reach สูงสุด, Growth momentum ดีมาก, กระจาย กทม.+ต่างจังหวัด</td>
+        <tr style="background:var(--highlight);">
+          <td><strong style="color:#8a7200;">★★★ PRIMARY</strong></td>
+          <td><span class="ptag ptag-tk">TikTok</span></td>
+          <td style="font-size:12px;">Reach สูงสุด, momentum ดีมาก, กระจายทั่วประเทศ</td>
           <td style="font-size:12px;font-weight:700;">Video Views + Shares</td>
-          <td style="font-size:12px;">Profile Views → Follow conversion</td>
+          <td style="font-size:12px;">Profile → Follow rate</td>
         </tr>
-        <tr style="background:var(--surface2);">
-          <td><span style="color:var(--lime);font-weight:700;">★★★ PRIMARY</span></td>
-          <td><span class="badge badge-lemon8">Lemon8</span></td>
-          <td style="font-size:12px;">Impression/follower ratio สูงมาก, Algorithm ดัน content ดี</td>
+        <tr style="background:var(--highlight);">
+          <td><strong style="color:#8a7200;">★★★ PRIMARY</strong></td>
+          <td><span class="ptag ptag-l8">Lemon8</span></td>
+          <td style="font-size:12px;">Impression ratio สูงสุด, Algorithm ดัน content ดี</td>
           <td style="font-size:12px;font-weight:700;">Impressions + Likes & Saves</td>
-          <td style="font-size:12px;">Follower Growth Rate</td>
+          <td style="font-size:12px;">Follower Growth</td>
         </tr>
         <tr>
-          <td><span style="color:var(--blue);font-weight:700;">★★ SECONDARY</span></td>
-          <td><span class="badge badge-youtube">YouTube</span></td>
-          <td style="font-size:12px;">Views ดี แต่ Retention ต้องแก้, ดีสำหรับ long-term SEO</td>
+          <td><strong style="color:var(--info);">★★ SECONDARY</strong></td>
+          <td><span class="ptag ptag-yt">YouTube</span></td>
+          <td style="font-size:12px;">Views ดี แต่ Retention ต้องแก้, long-term SEO</td>
           <td style="font-size:12px;font-weight:700;">Watch Time + Avg % Viewed</td>
           <td style="font-size:12px;">Subscriber Growth</td>
         </tr>
         <tr>
-          <td><span style="color:var(--blue);font-weight:700;">★★ SECONDARY</span></td>
-          <td><span class="badge badge-facebook">Facebook</span></td>
+          <td><strong style="color:var(--info);">★★ SECONDARY</strong></td>
+          <td><span class="ptag ptag-fb">Facebook</span></td>
           <td style="font-size:12px;">Reels ดัน Views ดี แต่ Follow conversion ต่ำ</td>
           <td style="font-size:12px;font-weight:700;">Reach + Reels Views</td>
-          <td style="font-size:12px;">Link Clicks (drive traffic)</td>
+          <td style="font-size:12px;">Link Clicks</td>
         </tr>
         <tr>
-          <td><span style="color:var(--text-dim);font-weight:700;">★ MAINTAIN</span></td>
-          <td><span class="badge badge-instagram">Instagram</span></td>
-          <td style="font-size:12px;">Followers ลด, Reach ต่ำ แต่ Demo ตรง target ดี</td>
+          <td><strong style="color:var(--ink4);">★ MAINTAIN</strong></td>
+          <td><span class="ptag ptag-ig">Instagram</span></td>
+          <td style="font-size:12px;">Followers ลด แต่ Demo ตรง target</td>
           <td style="font-size:12px;font-weight:700;">Reach + Engagement Rate</td>
           <td style="font-size:12px;">External Link Taps</td>
         </tr>
         <tr>
-          <td><span style="color:var(--text-muted);font-weight:700;">SUPPLEMENT</span></td>
-          <td><span class="badge badge-spotify">Spotify</span></td>
-          <td style="font-size:12px;">Niche audience แต่ตรง target — ใช้ build thought leadership</td>
+          <td><strong style="color:var(--ink4);">SUPPLEMENT</strong></td>
+          <td><span class="ptag ptag-sp">Spotify</span></td>
+          <td style="font-size:12px;">Niche แต่ตรง target — thought leadership</td>
           <td style="font-size:12px;font-weight:700;">Listen-through Rate</td>
-          <td style="font-size:12px;">Episode Saves/Shares</td>
+          <td style="font-size:12px;">Episode Saves</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- Key Takeaways -->
-  <div class="grid grid-2" style="margin-bottom:24px;">
+  <div class="g g2" style="margin-bottom:24px;">
     <div>
-      <div class="dir-card">
-        <h3 style="color:var(--lime);">1. THOUGHT Series คือ Content Pillar ที่ได้ผลจริง</h3>
-        <p>ทุก platform ที่ลง THOUGHT series (TikTok, YouTube, Lemon8, IG) ล้วนเห็น performance ดีขึ้น EP ที่ว่าด้วย Business strategy/Marketing ได้ views สูงสุด → ควรทำต่อเนื่องและขยายไปทุก channel</p>
-      </div>
-      <div class="dir-card">
-        <h3 style="color:var(--orange);">2. Hook Problem — ต้องแก้ 2 วินาทีแรก</h3>
-        <p>YouTube swipe-away 91.3% + TikTok comments = 0 → Content มีคุณค่า แต่ Hook ไม่แข็งพอ ควรเปลี่ยนจากแบบ title card มาเป็น talking head / strong question / bold statement ใน 2 วิแรก</p>
-      </div>
-      <div class="dir-card">
-        <h3 style="color:var(--cyan);">3. Audience Profile ชัดเจนมาก</h3>
-        <p>Core audience ทุก platform = คนไทย อายุ 25-44 ปี อยู่ กทม.เป็นหลัก สนใจ Business/Marketing/Digital — ตรง positioning ของ SUFFIX ไม่ต้อง pivot, แค่ลงให้ลึกขึ้น</p>
-      </div>
+      <div class="dir"><h3 style="color:var(--up);">1. THOUGHT Series = Content Pillar ที่ได้ผลจริง</h3><p>ทุก platform ที่ลง THOUGHT series เห็น performance ดีขึ้น EP ว่าด้วย Business strategy/Marketing ได้ views สูงสุด → ทำต่อเนื่อง repurpose ทุก channel</p></div>
+      <div class="dir"><h3 style="color:var(--warn);">2. Hook Problem — แก้ 2 วินาทีแรก</h3><p>YouTube swipe-away 91.3% + TikTok comments = 0 → Hook ไม่แข็งพอ เปลี่ยนจาก title card เป็น talking head / bold question / strong statement</p></div>
+      <div class="dir"><h3 style="color:var(--info);">3. Audience ชัดเจน ไม่ต้อง Pivot</h3><p>Core audience ทุก platform = คนไทย 25-44 ปี กทม. สนใจ Business/Marketing/Digital — ตรง positioning SUFFIX ไม่ต้องเปลี่ยนทิศ แค่ลงลึกขึ้น</p></div>
     </div>
     <div>
-      <div class="dir-card">
-        <h3 style="color:var(--green);">4. Lemon8 = Dark Horse ที่ไม่ควรมองข้าม</h3>
-        <p>31.7K impressions จาก 27 followers = organic reach ratio ดีที่สุดในทุก channel Algorithm ของ Lemon8 ดัน content ให้ดีมาก เหมาะกับ long-form visual content (infographic style) ที่ SUFFIX ถนัด</p>
-      </div>
-      <div class="dir-card">
-        <h3 style="color:var(--red);">5. Instagram ต้อง revive ด้วย Reels</h3>
-        <p>972 followers แต่ reach แค่ 78 คน (8% ของ followers) — IG ลด organic reach ต่อเนื่อง ทางเดียวที่จะกลับมาคือ Reels + Consistent posting Repurpose จาก TikTok ได้เลย</p>
-      </div>
-      <div class="dir-card">
-        <h3 style="color:var(--purple);">6. Facebook Malawi Audience — ต้องตรวจสอบ</h3>
-        <p>Malawi 8.7-9.3% ใน Facebook เป็นตัวเลขผิดปกติสำหรับ Thai B2B company ควรตรวจสอบว่าเป็น bot/spam follows หรือไม่ หากใช่ ให้ทำความสะอาด audience</p>
-      </div>
+      <div class="dir"><h3 style="color:var(--lemon8);">4. Lemon8 = Dark Horse อย่ามองข้าม</h3><p>31.7K impressions จาก 27 followers — organic reach ratio ดีสุดในทุก channel Algorithm ดัน content ดี เหมาะกับ visual/infographic ที่ SUFFIX ถนัด</p></div>
+      <div class="dir"><h3 style="color:var(--down);">5. Instagram ต้อง Revive ด้วย Reels</h3><p>972 followers แต่ reach 78 (8%) — IG ลด organic reach ต่อเนื่อง ทางเดียวคือ Reels + Consistent posting Repurpose จาก TikTok ได้เลย</p></div>
+      <div class="dir"><h3 style="color:var(--warn);">6. Facebook Malawi — ตรวจสอบ</h3><p>Malawi 8.7-9.3% ผิดปกติสำหรับ Thai B2B company ตรวจว่าเป็น bot/spam หรือไม่ หากใช่ ทำความสะอาด audience</p></div>
     </div>
   </div>
 
-  <!-- Recommended Posting Strategy -->
-  <div class="card" style="margin-bottom:24px;">
-    <div class="card-title" style="margin-bottom:16px;">Recommended Organic Posting Cadence</div>
+  <div class="c" style="margin-bottom:24px;overflow-x:auto;">
+    <div class="c-title" style="margin-bottom:14px;">Recommended Posting Cadence</div>
     <table class="tbl">
-      <thead><tr><th>Channel</th><th>Frequency</th><th>Content Type</th><th>Best Time</th><th>Repurpose From</th></tr></thead>
+      <thead><tr><th>Channel</th><th>Frequency</th><th>Content Type</th><th>Best Time</th><th>Repurpose</th></tr></thead>
       <tbody>
-        <tr><td><span class="badge badge-tiktok">TikTok</span></td><td>3-4x / สัปดาห์</td><td>THOUGHT shorts (30-60s), Tips, Behind-the-scenes</td><td>12.00-13.00 / 18.00-20.00</td><td>Original</td></tr>
-        <tr><td><span class="badge badge-lemon8">Lemon8</span></td><td>2-3x / สัปดาห์</td><td>Infographic carousel, Deep-dive articles</td><td>ตาม Algorithm</td><td>TikTok script → Expand</td></tr>
-        <tr><td><span class="badge badge-youtube">YouTube</span></td><td>2x / สัปดาห์</td><td>Shorts (recut จาก TikTok) + 1 long-form/เดือน</td><td>ตาม Shorts feed</td><td>TikTok</td></tr>
-        <tr><td><span class="badge badge-facebook">Facebook</span></td><td>2x / สัปดาห์</td><td>Reels (จาก TikTok) + Link posts</td><td>12.00-14.00 weekdays</td><td>TikTok → Reels</td></tr>
-        <tr><td><span class="badge badge-instagram">Instagram</span></td><td>2x / สัปดาห์</td><td>Reels + Stories daily</td><td>15.00-18.00</td><td>TikTok → Reels</td></tr>
-        <tr><td><span class="badge badge-spotify">Spotify</span></td><td>1x / 2 สัปดาห์</td><td>Podcast episode (expand จาก THOUGHT)</td><td>—</td><td>THOUGHT script → Long audio</td></tr>
+        <tr><td><span class="ptag ptag-tk">TikTok</span></td><td>3-4x/wk</td><td>THOUGHT shorts 30-60s, Tips, BTS</td><td>12-13h / 18-20h</td><td>Original</td></tr>
+        <tr><td><span class="ptag ptag-l8">Lemon8</span></td><td>2-3x/wk</td><td>Infographic carousel, Deep-dive</td><td>Algorithm</td><td>TikTok → Expand</td></tr>
+        <tr><td><span class="ptag ptag-yt">YouTube</span></td><td>2x/wk</td><td>Shorts + 1 long-form/mo</td><td>Shorts feed</td><td>TikTok recut</td></tr>
+        <tr><td><span class="ptag ptag-fb">Facebook</span></td><td>2x/wk</td><td>Reels + Link posts</td><td>12-14h weekdays</td><td>TikTok → Reels</td></tr>
+        <tr><td><span class="ptag ptag-ig">Instagram</span></td><td>2x/wk</td><td>Reels + Stories daily</td><td>15-18h</td><td>TikTok → Reels</td></tr>
+        <tr><td><span class="ptag ptag-sp">Spotify</span></td><td>1x/2wk</td><td>Podcast (expand THOUGHT)</td><td>—</td><td>Script → Audio</td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- Final Note -->
-  <div style="background:linear-gradient(135deg, #1a1a1a, #0d1a00); border:1px solid var(--lime); border-radius:12px; padding:32px; text-align:center;">
-    <div style="font-size:18px; font-weight:700; color:var(--lime); margin-bottom:8px;">Bottom Line</div>
-    <div style="font-size:14px; color:var(--text); max-width:700px; margin:0 auto; line-height:1.8;">
-      SUFFIX ควร<strong style="color:var(--lime);"> Focus ที่ TikTok + Lemon8</strong> เป็นหลัก เพราะ organic reach ดีที่สุด<br>
+  <div class="bottom-box">
+    <h2>Bottom Line</h2>
+    <p>
+      SUFFIX ควร <strong>Focus ที่ TikTok + Lemon8</strong> เป็นหลัก เพราะ organic reach ดีที่สุด<br>
       ใช้ <strong>THOUGHT Series</strong> เป็น Content Pillar แล้ว repurpose ไปทุก channel<br>
       แก้ <strong>Hook Problem</strong> เพื่อเพิ่ม Retention + Engagement<br>
-      วัดผลด้วย <strong>Views + Shares + Profile-to-Follow Conversion</strong>
-    </div>
+      วัดผลด้วย <strong>Views · Shares · Profile-to-Follow Conversion</strong>
+    </p>
   </div>
 </div>
 
-</div><!-- end main -->
+</div>
 
 <script>
-function showSection(id) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('sec-' + id).classList.add('active');
+function go(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('s-'+id).classList.add('active');
   event.target.classList.add('active');
-  window.scrollTo({top: document.querySelector('.main').offsetTop - 20, behavior: 'smooth'});
+  window.scrollTo({top:document.querySelector('.main').offsetTop-10,behavior:'smooth'});
 }
 </script>
 </body>
